@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+.env.example
+node_modules
+vendor
+Dockerfile
+README.md
+backlog
+**/.DS_Store

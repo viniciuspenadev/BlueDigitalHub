@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Handle Language routes (e.g., /en/about -> index.php?lang=en)
+# This is a simple implementation; complex routing can be added later.
