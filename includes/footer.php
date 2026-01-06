@@ -5,26 +5,29 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center mb-6">
-                    <i data-lucide="zap" class="h-6 w-6 text-[#0c46e6] mr-2 fill-current"></i>
-                    <span class="text-2xl font-bold text-[#0000bf]">BlueDigital Hub</span>
-                </div>
+                <!-- Exact Navbar Logo -->
+                <a href="#" class="flex items-center group mb-6">
+                    <i data-lucide="zap"
+                        class="h-6 w-6 text-[#0c46e6] mr-2 fill-current group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-2xl text-[#0000bf] tracking-tight">BlueDigital<span
+                            class="font-light text-[#0c46e6]">Hub</span></span>
+                </a>
+
                 <p class="text-slate-500 max-w-sm mb-8 leading-relaxed">
                     <?php echo $t['footer_desc']; ?>
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#"
-                        class="text-slate-400 hover:text-[#0c46e6] transition-colors bg-slate-50 p-3 rounded-full hover:bg-blue-50 border border-slate-100 hover:border-blue-200">
-                        <i data-lucide="instagram" class="h-5 w-5"></i>
-                    </a>
-                    <a href="#"
-                        class="text-slate-400 hover:text-[#0c46e6] transition-colors bg-slate-50 p-3 rounded-full hover:bg-blue-50 border border-slate-100 hover:border-blue-200">
-                        <i data-lucide="linkedin" class="h-5 w-5"></i>
-                    </a>
-                    <a href="#"
-                        class="text-slate-400 hover:text-[#0c46e6] transition-colors bg-slate-50 p-3 rounded-full hover:bg-blue-50 border border-slate-100 hover:border-blue-200">
-                        <i data-lucide="twitter" class="h-5 w-5"></i>
-                    </a>
+
+                <!-- Social & Contact -->
+                <div class="flex flex-col space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <a href="https://www.instagram.com/bluedigital.hub/" target="_blank"
+                            class="text-slate-400 hover:text-[#0c46e6] transition-colors bg-slate-50 p-3 rounded-full hover:bg-blue-50 border border-slate-100 hover:border-blue-200">
+                            <i data-lucide="instagram" class="h-5 w-5"></i>
+                        </a>
+                        <!-- Address Hidden
+                        <span class="text-slate-400 text-sm">Av. Faria Lima...</span>
+                        -->
+                    </div>
                 </div>
             </div>
 

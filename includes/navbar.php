@@ -6,7 +6,7 @@
 
     <!-- Mobile Header (Full Width) -->
     <div
-        class="md:hidden w-full bg-white/90 backdrop-blur-xl border-b border-white/50 px-6 py-4 flex items-center justify-between shadow-sm">
+        class="lg:hidden w-full bg-white/90 backdrop-blur-xl border-b border-white/50 px-6 py-4 flex items-center justify-between shadow-sm">
         <!-- Logo Left -->
         <a href="#" class="flex items-center group">
             <i data-lucide="zap" class="h-6 w-6 text-[#0c46e6] mr-2 group-hover:scale-110 transition-transform"></i>
@@ -23,7 +23,7 @@
 
     <!-- Desktop Glass Pill (Original Design) -->
     <div
-        class="hidden md:flex bg-white/95 backdrop-blur-xl border border-white/50 rounded-full px-6 py-3 items-center justify-center shadow-xl shadow-black/5">
+        class="hidden lg:flex bg-white/95 backdrop-blur-xl border border-white/50 rounded-full px-6 py-3 items-center justify-center shadow-xl shadow-black/5">
 
         <ul class="flex items-center space-x-2">
             <!-- Desktop Logo -->
@@ -60,7 +60,7 @@
 
             <li class="ml-2">
                 <a href="#contact"
-                    class="bg-[#0c46e6] hover:bg-[#0000bf] text-white px-6 py-2.5 rounded-full font-medium transition-all hover:shadow-lg hover:shadow-[#0c46e6]/30 transform hover:-translate-y-0.5 text-sm">
+                    class="bg-[#0c46e6] hover:bg-[#0000bf] text-white px-6 py-2.5 rounded-full font-medium transition-all hover:shadow-lg hover:shadow-[#0c46e6]/30 transform hover:-translate-y-0.5 text-sm whitespace-nowrap">
                     <?php echo $t['nav_start_project']; ?>
                 </a>
             </li>

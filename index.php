@@ -112,14 +112,17 @@ $meta_desc = $t['meta_description'] ?? 'Soluções digitais inovadoras para o se
     </main>
 
     <!-- Floating Widget -->
-    <?php include 'includes/ai-consultant.php'; ?>
+    <?php // include 'includes/ai-consultant.php'; 
+    ?>
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
 
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/ia-chat.js"></script>
+    <script>
+        // src="assets/js/ia-chat.js"
+    </script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
