@@ -2,9 +2,12 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
-# Instala dependências a partir do lockfile (build reprodutível)
+# Instala dependências. Usamos `npm install` (e não `npm ci`) porque o
+# package-lock.json é gerado no Windows e não prevê 100% das dependências
+# opcionais nativas do Linux (ex.: @emnapi/* puxados pelo @tailwindcss/oxide),
+# o que faz o `npm ci` falhar por "lock file out of sync" dentro do container.
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install --no-audit --no-fund
 
 # Copia o restante do código e gera o site estático em /app/dist
 COPY . .
