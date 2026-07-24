@@ -35,7 +35,7 @@ $services_list = [
 ];
 ?>
 <section id="services" class="py-24 bg-white relative border-t border-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-10 md:px-12 lg:px-8 relative z-10">
         <div class="text-center mb-16">
             <span class="text-[#0c46e6] font-bold tracking-wider uppercase text-sm mb-2 block">
                 <?php echo $t['service_expert_label']; ?>

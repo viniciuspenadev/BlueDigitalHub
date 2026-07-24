@@ -2,7 +2,7 @@
 // includes/contact.php
 ?>
 <section id="contact" class="py-24 bg-slate-50 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-10 md:px-12 lg:px-8 relative z-10">
 
         <!-- Floating Decor -->
         <div class="absolute top-0 right-1/4 w-32 h-32 bg-[#0c46e6]/5 rounded-full blur-2xl"></div>

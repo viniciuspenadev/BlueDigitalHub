@@ -6,7 +6,7 @@
 
     <!-- Mobile Header (Full Width) -->
     <div
-        class="lg:hidden w-full bg-white/90 backdrop-blur-xl border-b border-white/50 px-6 py-4 flex items-center justify-between shadow-sm">
+        class="lg:hidden w-full bg-white/90 backdrop-blur-xl border-b border-white/50 px-10 py-4 flex items-center justify-between shadow-sm">
         <!-- Logo Left -->
         <a href="#" class="flex items-center group">
             <i data-lucide="zap" class="h-6 w-6 text-[#0c46e6] mr-2 group-hover:scale-110 transition-transform"></i>

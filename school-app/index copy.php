@@ -232,79 +232,15 @@ $meta_desc = $pt['hero_subtitle'];
         .kerning-tight {
             letter-spacing: -0.04em;
         }
-
-        /* Ultra-Minimalist & Slim Mobile Fix */
-        @media (max-width: 768px) {
-
-            html,
-            body {
-                overflow-x: hidden !important;
-                width: 100% !important;
-            }
-
-            .hero-title {
-                font-size: 1.85rem !important;
-                /* Extremely clean & readable */
-                line-height: 1.2 !important;
-                letter-spacing: -0.02em !important;
-                margin-bottom: 1rem !important;
-            }
-
-            section {
-                padding-left: 1.5rem !important;
-                /* Forced 24px margin */
-                padding-right: 1.5rem !important;
-                /* Forced 24px margin */
-                padding-top: 3rem !important;
-                /* Reduced py-12 */
-                padding-bottom: 3rem !important;
-            }
-
-            .max-w-7xl,
-            .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-
-            .stats-text {
-                font-size: 1.1rem !important;
-            }
-
-            .glass-os {
-                backdrop-filter: blur(12px) !important;
-            }
-
-            /* Fix for overlapping cards in print */
-            #notification-feed {
-                display: none !important;
-                /* Remove noise on mobile */
-            }
-
-            h2 {
-                font-size: 1.5rem !important;
-                line-height: 1.3 !important;
-            }
-
-            p {
-                font-size: 0.95rem !important;
-                line-height: 1.5 !important;
-            }
-
-            .rounded-\[2rem\],
-            .rounded-\[2\.5rem\] {
-                border-radius: 1.25rem !important;
-                /* Softer minimalist corners */
-            }
-        }
     </style>
 </head>
 
 <body class="selection:bg-[#0c46e6] selection:text-white relative">
 
     <!-- Custom BluEduca Navbar -->
-    <nav class="fixed z-50 w-full top-0 md:top-6 px-4 md:px-10">
+    <nav class="fixed z-50 w-full top-0 md:top-6 px-4">
         <div
-            class="max-w-3xl mx-auto bg-white/70 backdrop-blur-xl border border-white/40 rounded-full px-10 py-3 flex items-center justify-between shadow-xl shadow-black/5 ring-1 ring-black/5">
+            class="max-w-3xl mx-auto bg-white/70 backdrop-blur-xl border border-white/40 rounded-full px-6 py-3 flex items-center justify-between shadow-xl shadow-black/5 ring-1 ring-black/5">
 
             <!-- Logo: BluEduca -->
             <a href="#" class="flex items-center gap-2 group">
@@ -341,7 +277,7 @@ $meta_desc = $pt['hero_subtitle'];
             class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-sky-200 blur-[100px] opacity-20 rounded-full z-0">
         </div>
 
-        <section class="max-w-7xl mx-auto pt-32 lg:pt-16 relative z-10">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-16 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                 <!-- Left Content: The Pitch -->
@@ -350,8 +286,7 @@ $meta_desc = $pt['hero_subtitle'];
 
 
                     <!-- Headline -->
-                    <h1
-                        class="hero-title text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[0.95] kerning-tight mb-8">
+                    <h1 class="text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[0.95] kerning-tight mb-8">
                         <?php echo $pt['hero_title']; ?>
                     </h1>
 
@@ -361,8 +296,7 @@ $meta_desc = $pt['hero_subtitle'];
                     </p>
 
                     <!-- Stats & Branding (Replaces CTAs) -->
-                    <div
-                        class="flex flex-wrap items-center gap-4 lg:gap-12 w-full justify-center lg:justify-start pt-4">
+                    <div class="flex items-center gap-8 lg:gap-12 w-full justify-center lg:justify-start pt-4">
 
                         <!-- Stat: 100% Mobile -->
                         <div class="flex items-center gap-4">
@@ -371,7 +305,7 @@ $meta_desc = $pt['hero_subtitle'];
                                 <i data-lucide="smartphone" class="w-6 h-6"></i>
                             </div>
                             <div class="text-left">
-                                <div class="stats-text text-xl md:text-2xl font-bold text-slate-900 leading-none mb-1">
+                                <div class="text-2xl font-bold text-slate-900 leading-none mb-1">
                                     <?php echo $pt['stats_1']; ?>
                                 </div>
                                 <div class="text-sm text-slate-500 font-medium"><?php echo $pt['stats_1_desc']; ?></div>
@@ -399,7 +333,7 @@ $meta_desc = $pt['hero_subtitle'];
 
                 <!-- Right Content: The Visual (Surprised Man + Tech UI) -->
                 <div
-                    class="lg:col-span-7 relative h-full flex items-end justify-center lg:justify-end mt-4 lg:mt-0 lg:translate-y-24">
+                    class="lg:col-span-7 relative h-full flex items-end justify-center lg:justify-end mt-16 lg:mt-0 lg:translate-y-24">
 
                     <!-- Immersive Background Glows (No more white wash) -->
                     <div
@@ -407,16 +341,15 @@ $meta_desc = $pt['hero_subtitle'];
                     </div>
 
                     <!-- The Surprised Man Image (Full Height Integration) -->
-                    <div
-                        class="relative z-10 w-full max-w-[280px] md:max-w-lg lg:max-w-xl mx-auto flex items-end h-full">
+                    <div class="relative z-10 w-full max-w-lg lg:max-w-xl mx-auto flex items-end h-full">
                         <img src="assets/img/surprised-young-man-green-shirt-holding-smartphone-transparent-background.png"
                             alt="Surprised User"
-                            class="w-full h-auto object-contain object-bottom drop-shadow-[0_25px_25px_rgba(0,0,0,0.15)] relative z-10 transform scale-110 md:scale-110 origin-bottom">
+                            class="w-full h-auto object-contain object-bottom drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] relative z-10 transform scale-110 origin-bottom">
 
                         <!-- Dynamic Notification Feed Container -->
                         <!-- Positioned to be 'floating' in the air, roughly between phone level and shoulder/head level -->
                         <div id="notification-feed"
-                            class="absolute top-[15%] right-0 scale-[0.6] origin-right lg:scale-100 lg:top-[20%] lg:right-[-15%] w-72 flex flex-col gap-4 z-20 pointer-events-none h-64 justify-end overflow-hidden pb-4">
+                            class="absolute top-[15%] right-0 scale-75 origin-right lg:scale-100 lg:top-[20%] lg:right-[-15%] w-72 flex flex-col gap-4 z-20 pointer-events-none h-64 justify-end overflow-hidden pb-4">
                             <!-- Cards will be injected here by JS -->
                         </div>
 
@@ -459,11 +392,11 @@ $meta_desc = $pt['hero_subtitle'];
         </section>
 
         <!-- "Bento Grid" Features Section -->
-        <section id="features" class="bg-slate-50 relative z-20">
-            <div class="max-w-7xl mx-auto">
+        <section id="features" class="bg-slate-50 py-32 relative z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <div class="text-center mb-16 md:mb-24">
-                    <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Um Sistema. <span
+                <div class="text-center mb-24">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Um Sistema. <span
                             class="text-[#0c46e6]">Infinitas Possibilidades.</span></h2>
                     <p class="text-lg text-slate-500 max-w-2xl mx-auto">Tudo o que uma escola moderna precisa, embalado
                         em uma experiência que os pais amam.</p>
@@ -474,7 +407,7 @@ $meta_desc = $pt['hero_subtitle'];
 
                     <!-- Feature 1: Communication (Big Card) -->
                     <div
-                        class="col-span-1 md:col-span-6 lg:col-span-7 bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 relative overflow-hidden group hover:shadow-xl transition-all duration-500 min-h-[320px] md:min-h-0">
+                        class="col-span-1 md:col-span-6 lg:col-span-7 bg-white rounded-[2.5rem] p-10 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 relative overflow-hidden group hover:shadow-xl transition-all duration-500">
                         <div class="relative z-10">
                             <div
                                 class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[#0c46e6] mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -497,7 +430,7 @@ $meta_desc = $pt['hero_subtitle'];
 
                     <!-- Feature 2: Financial (Tall Card) -->
                     <div
-                        class="col-span-1 md:col-span-6 lg:col-span-5 bg-[#0c46e6] text-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-[0_20px_40px_-12px_rgba(12,70,230,0.4)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500 min-h-[300px] md:min-h-0">
+                        class="col-span-1 md:col-span-6 lg:col-span-5 bg-[#0c46e6] text-white rounded-[2.5rem] p-10 shadow-[0_20px_40px_-12px_rgba(12,70,230,0.4)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500">
                         <div class="relative z-10 h-full flex flex-col justify-between">
                             <div>
                                 <div
@@ -522,37 +455,38 @@ $meta_desc = $pt['hero_subtitle'];
                                 <div class="w-8 bg-white/20 rounded-t-lg h-[55%]"></div>
                             </div>
                         </div>
-                        <!-- Noise overlay (Removed external broken asset) -->
-                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-slate-900/10">
+                        <!-- Noise overlay -->
+                        <div
+                            class="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
                         </div>
                     </div>
 
                     <!-- Feature 3: Academic (Square) -->
                     <div
-                        class="col-span-1 md:col-span-3 lg:col-span-4 bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 hover:border-blue-200 transition-colors duration-300">
+                        class="col-span-1 md:col-span-3 lg:col-span-4 bg-white rounded-[2.5rem] p-8 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 hover:border-blue-200 transition-colors duration-300">
                         <div
-                            class="w-10 h-10 md:w-12 md:h-12 bg-green-50 rounded-xl md:rounded-2xl flex items-center justify-center text-green-600 mb-4 md:mb-6">
-                            <i data-lucide="graduation-cap" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-2">Pedagógico</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Pedagógico</h3>
                         <p class="text-sm text-slate-500">Diário de classe digital, notas e frequências em tempo real.
                         </p>
                     </div>
 
                     <!-- Feature 4: Security (Square) -->
                     <div
-                        class="col-span-1 md:col-span-3 lg:col-span-4 bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 hover:border-blue-200 transition-colors duration-300">
+                        class="col-span-1 md:col-span-3 lg:col-span-4 bg-white rounded-[2.5rem] p-8 shadow-[0_2px_40px_-12px_rgba(0,0,0,0.06)] border border-slate-100 hover:border-blue-200 transition-colors duration-300">
                         <div
-                            class="w-10 h-10 md:w-12 md:h-12 bg-orange-50 rounded-xl md:rounded-2xl flex items-center justify-center text-orange-600 mb-4 md:mb-6">
-                            <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-2">Segurança Pura</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Segurança Pura</h3>
                         <p class="text-sm text-slate-500">Controle de portaria com QR Code e autorizações digitais.</p>
                     </div>
 
                     <!-- Feature 5: Timeline (Wide) -->
                     <div
-                        class="col-span-1 md:col-span-6 lg:col-span-4 bg-slate-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-xl text-white relative overflow-hidden group">
+                        class="col-span-1 md:col-span-6 lg:col-span-4 bg-slate-900 rounded-[2.5rem] p-8 shadow-xl text-white relative overflow-hidden group">
                         <div class="relative z-10 h-full flex flex-col">
                             <h3 class="text-lg font-bold mb-1 text-slate-200 uppercase tracking-widest text-[10px]">
                                 Timeline</h3>
@@ -575,12 +509,12 @@ $meta_desc = $pt['hero_subtitle'];
         </section>
 
         <!-- Deep Dive Section (Zig-Zag) -->
-        <section id="solutions" class="bg-white relative z-20 overflow-hidden">
-            <div class="max-w-7xl mx-auto">
+        <section id="solutions" class="py-32 bg-white relative z-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <!-- Section Header -->
-                <div class="text-center mb-16 md:mb-24">
-                    <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">O Poder <span
+                <div class="text-center mb-24">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">O Poder <span
                             class="text-[#0c46e6]">Real</span> da Tecnologia.</h2>
                     <p class="text-lg text-slate-500 max-w-2xl mx-auto">Não é apenas sobre digitizar. É sobre
                         transformar a experiência escolar em algo mágico.</p>
@@ -665,8 +599,7 @@ $meta_desc = $pt['hero_subtitle'];
                                 <!-- Card 1: Gateway -->
                                 <div
                                     class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-200 transition-colors">
-                                    <div
-                                        class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-2">
+                                    <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-2">
                                         <i data-lucide="credit-card" class="w-5 h-5"></i>
                                     </div>
                                     <h5 class="font-bold text-slate-800 text-sm mb-1">
@@ -679,8 +612,7 @@ $meta_desc = $pt['hero_subtitle'];
                                 <!-- Card 2: Régua -->
                                 <div
                                     class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                                    <div
-                                        class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-2">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-2">
                                         <i data-lucide="bell" class="w-5 h-5"></i>
                                     </div>
                                     <h5 class="font-bold text-slate-800 text-sm mb-1">
@@ -730,8 +662,7 @@ $meta_desc = $pt['hero_subtitle'];
 
                     <!-- Text Content -->
                     <div class="order-2">
-                        <div
-                            class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6">
+                        <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6">
                             <i data-lucide="wallet" class="w-6 h-6"></i>
                         </div>
                         <h3 class="text-3xl font-bold text-slate-900 mb-4">
@@ -868,7 +799,7 @@ $meta_desc = $pt['hero_subtitle'];
             </div>
         </div>
 
-        <div class="max-w-xl mx-auto relative z-10">
+        <div class="max-w-xl mx-auto px-6 relative z-10">
 
             <!-- Progress Bar -->
             <div class="w-full bg-slate-200 h-1.5 rounded-full mb-12 overflow-hidden">
@@ -877,14 +808,13 @@ $meta_desc = $pt['hero_subtitle'];
 
             <!-- Quiz Container -->
             <div
-                class="bg-white rounded-[2rem] shadow-2xl p-6 md:p-12 relative min-h-[460px] md:min-h-[420px] flex items-center justify-center text-center">
+                class="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 relative min-h-[420px] flex items-center justify-center text-center">
 
                 <!-- Step 1: Intro / Challenge -->
                 <div id="step-1"
                     class="w-full transition-all duration-500 transform transla translate-x-0 opacity-100 absolute inset-0 p-12 flex flex-col justify-center">
                     <span class="text-[#0c46e6] font-bold tracking-wider uppercase text-xs mb-4">Passo 1 de 3</span>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Qual o
-                        maior desafio da sua
+                    <h3 class="text-3xl font-extrabold text-slate-900 mb-8 leading-tight">Qual o maior desafio da sua
                         gestão hoje?</h3>
                     <div class="flex flex-col gap-4">
                         <button onclick="nextStep(2, 'Inadimplência')"
@@ -916,8 +846,7 @@ $meta_desc = $pt['hero_subtitle'];
                             data-lucide="arrow-left" class="w-6 h-6"></i></button>
 
                     <span class="text-[#0c46e6] font-bold tracking-wider uppercase text-xs mb-4">Passo 2 de 3</span>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Quantos
-                        alunos a escola
+                    <h3 class="text-3xl font-extrabold text-slate-900 mb-8 leading-tight">Quantos alunos a escola
                         possui?</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <button onclick="nextStep(3, '0-100')"
@@ -1110,7 +1039,7 @@ $meta_desc = $pt['hero_subtitle'];
             const el = document.createElement('div');
 
             // Fixed: Right Aligned, Fixed Width (w-72), reduced Shadow (shadow-lg)
-            el.className = 'absolute bottom-6 right-4 left-4 md:left-auto md:right-6 md:w-80 p-5 rounded-3xl shadow-lg transform translate-y-12 opacity-0 transition-all duration-700 border border-white/60 bg-white/40 backdrop-blur-xl z-20';
+            el.className = 'absolute bottom-6 right-6 w-80 p-5 rounded-3xl shadow-lg transform translate-y-12 opacity-0 transition-all duration-700 border border-white/60 bg-white/40 backdrop-blur-xl z-20';
 
             el.innerHTML = `
                 <div class="flex items-start gap-4">

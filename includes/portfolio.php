@@ -51,7 +51,7 @@ $projects_list = [
         class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white opacity-60 pointer-events-none">
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-10 md:px-12 lg:px-8 relative z-10">
 
         <!-- Header & Controls -->
         <div class="flex flex-col md:flex-row justify-between items-end mb-12">

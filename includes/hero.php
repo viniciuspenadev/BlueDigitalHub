@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+    <div class="container max-w-7xl mx-auto px-10 md:px-12 lg:px-8 relative z-10 text-white">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             <!-- Left Column: Typography -->
