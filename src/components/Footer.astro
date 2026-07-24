@@ -6,13 +6,8 @@ const year = new Date().getFullYear();
   <div class="mx-auto max-w-7xl px-6">
     <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-4">
       <div class="md:col-span-2">
-        <a href="/" class="group mb-6 flex items-center">
-          <svg class="mr-2 h-6 w-6 text-brand transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M13 2 4.5 14h5.5l-1 8L18.5 9.5H12L13 2z" />
-          </svg>
-          <span class="font-display text-2xl font-bold tracking-tight text-deep"
-            >BlueDigital<span class="font-medium text-brand">Hub</span></span
-          >
+        <a href="/" class="mb-6 flex items-center" aria-label="BlueDigital Hub — início">
+          <img src="/logo.svg" alt="BlueDigital Hub" width="1920" height="396" class="h-11 w-auto" />
         </a>
         <p class="mb-8 max-w-sm leading-relaxed text-slate-500">
           Agência de marketing estratégico em São Paulo. Unimos criatividade, dados e tecnologia para acelerar o
@@ -37,7 +32,7 @@ const year = new Date().getFullYear();
         <h4 class="mb-6 font-display text-lg font-bold text-deep">Serviços</h4>
         <ul class="space-y-4 text-slate-500">
           <li><a href="/servicos/branding-estrategico/" class="transition-colors hover:text-brand">Branding Estratégico</a></li>
-          <li><a href="/#services" class="transition-colors hover:text-brand">Growth & Performance</a></li>
+          <li><a href="/#services" class="transition-colors hover:text-brand">Tráfego Pago</a></li>
           <li><a href="/#services" class="transition-colors hover:text-brand">Inbound Marketing</a></li>
           <li><a href="/#services" class="transition-colors hover:text-brand">Web & E-commerce</a></li>
         </ul>
@@ -57,10 +52,11 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="flex flex-col items-center justify-between border-t border-slate-100 pt-8 text-sm text-slate-400 md:flex-row"
+      class="flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-8 text-sm text-slate-400 md:flex-row md:gap-0"
     >
+      <img src="/logo.svg" alt="BlueDigital Hub" width="1920" height="396" class="h-5 w-auto opacity-70" />
       <p>&copy; {year} BlueDigital Hub. Todos os direitos reservados.</p>
-      <p class="mt-2 md:mt-0">Feito com <span class="mx-1">💙</span> em São Paulo</p>
+      <p>Feito com <span class="mx-1">💙</span> em São Paulo</p>
     </div>
   </div>
 </footer>

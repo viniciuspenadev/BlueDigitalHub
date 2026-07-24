@@ -19,7 +19,7 @@ if (preloader && !reduced) {
   const state = { v: 0 };
   gsap.to(state, {
     v: 100,
-    duration: 1.6,
+    duration: 0.6, // contador rápido — reduz o tempo até o H1 pintar (LCP)
     ease: 'power2.inOut',
     onUpdate() {
       pct.textContent = `${Math.round(state.v)}%`;
@@ -27,12 +27,12 @@ if (preloader && !reduced) {
     onComplete() {
       gsap.to(preloader, {
         yPercent: -100,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power4.inOut',
         onStart() {
           const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-          tl.to(heroLines, { yPercent: 0, duration: 1.1, stagger: 0.12 }, 0.15)
-            .to(heroRest, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08 }, 0.65);
+          tl.to(heroLines, { yPercent: 0, duration: 0.7, stagger: 0.08 }, 0.05)
+            .to(heroRest, { opacity: 1, y: 0, duration: 0.6, stagger: 0.06 }, 0.3);
         },
         onComplete() {
           preloader.remove();

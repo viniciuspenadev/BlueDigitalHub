@@ -5,7 +5,12 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://bluedigitalhub.com.br',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Data de modificação → sinaliza ao Googlebot quando revisitar.
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

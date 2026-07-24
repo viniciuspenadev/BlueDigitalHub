@@ -4,8 +4,10 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  /** Imagem de compartilhamento social (1200×630, JPG/PNG). Caminho a partir da raiz de /public. */
+  /** Imagem de compartilhamento social (836×471 JPG). Caminho a partir da raiz de /public. */
   image?: string;
+  /** Impede indexação desta página (ex.: 404). */
+  noindex?: boolean;
   /** Schemas JSON-LD adicionais desta página (Service, BreadcrumbList, etc.) */
   schemas?: Record<string, unknown>[];
 }
@@ -15,11 +17,29 @@ const {
   description =
     'A Blue Digital Hub é uma agência de marketing digital, sediada em São Paulo, unindo estratégia, growth, conteúdo, dados e tecnologia para gerar resultados reais.',
   image = '/og-cover.jpg',
+  noindex = false,
   schemas = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+
+// Catálogo dos serviços (ajuda o Google a mapear o portfólio à agência).
+const offerCatalog = {
+  '@type': 'OfferCatalog',
+  name: 'Serviços de Marketing Digital',
+  itemListElement: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Branding Estratégico', url: 'https://bluedigitalhub.com.br/servicos/branding-estrategico/' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tráfego Pago (Growth & Performance)' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Inteligência de Dados' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media & Design Gráfico' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Métricas & BI' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Campanhas Off-line' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Inbound Marketing' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Desenvolvimento Web e E-commerce' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Jornada de Conversão e Agentes de IA' } },
+  ],
+};
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -28,31 +48,54 @@ const orgSchema = {
   name: 'BlueDigital Hub',
   alternateName: 'BlueDigital Hub — Agência de Marketing',
   url: 'https://bluedigitalhub.com.br',
+  logo: {
+    '@type': 'ImageObject',
+    '@id': 'https://bluedigitalhub.com.br/#logo',
+    url: 'https://bluedigitalhub.com.br/logo.svg',
+    contentUrl: 'https://bluedigitalhub.com.br/logo.svg',
+    width: 1920,
+    height: 396,
+    caption: 'BlueDigital Hub',
+  },
+  image: 'https://bluedigitalhub.com.br/og-cover.jpg',
   email: 'contato@bluedigitalhub.com.br',
-  telephone: '+55 11 92093-2633',
+  telephone: '+5511920932633',
   description,
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Rua Haia, 101 - Vila Rui Barbosa',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
+    postalCode: '03734-130',
     addressCountry: 'BR',
   },
-  areaServed: 'BR',
+  areaServed: { '@type': 'Country', name: 'Brasil' },
   serviceType: [
     'Agência de marketing',
     'Branding estratégico',
-    'Growth e performance',
+    'Tráfego pago (Growth e Performance)',
     'Inteligência de dados e BI',
-    'Conteúdo e social media',
+    'Social media, criação de conteúdo e design gráfico',
     'Inbound marketing',
     'Campanhas off-line',
     'Desenvolvimento web e e-commerce',
     'Automação e agentes de IA',
   ],
+  hasOfferCatalog: offerCatalog,
   sameAs: ['https://www.instagram.com/bluedigital.hub/'],
 };
 
-const allSchemas = [orgSchema, ...schemas];
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://bluedigitalhub.com.br/#website',
+  url: 'https://bluedigitalhub.com.br',
+  name: 'BlueDigital Hub',
+  inLanguage: 'pt-BR',
+  publisher: { '@id': 'https://bluedigitalhub.com.br/#agencia' },
+};
+
+const allSchemas = [orgSchema, websiteSchema, ...schemas];
 ---
 
 <!doctype html>
@@ -62,6 +105,7 @@ const allSchemas = [orgSchema, ...schemas];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#0000bf" />
@@ -75,19 +119,19 @@ const allSchemas = [orgSchema, ...schemas];
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="836" />
+    <meta property="og:image:height" content="471" />
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fontes self-hosted: preload dos subsets latin usados acima da dobra -->
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     {allSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
