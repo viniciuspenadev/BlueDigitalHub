@@ -1,0 +1,251 @@
+---
+const projects = [
+  {
+    title: 'Kora',
+    category: 'Produto · SaaS + IA',
+    desc: 'Sistema de atendimento com CRM para WhatsApp, automações e inteligência artificial — produto da Blue Digital Hub.',
+    image: '/assets/cases/kora.jpg',
+    url: 'https://omnikora.com.br/',
+  },
+  {
+    title: 'BluEduca',
+    category: 'Produto · SaaS',
+    desc: 'Sistema de gestão escolar da Blue Digital Hub que conecta escola, pais e alunos em um só lugar.',
+    image: '/assets/cases/blueduca.jpg',
+    url: 'https://www.blueduca.com.br/',
+  },
+  {
+    title: 'Python Logistics',
+    category: 'Site + Marketing',
+    desc: 'Agente de carga internacional em Miami — presença digital e marketing para o mercado global de logística.',
+    image: '/assets/cases/python-logistics.jpg',
+    url: 'https://pythonlogistics.com/',
+  },
+  {
+    title: 'Funchal Pescados',
+    category: 'Site + Marketing',
+    desc: 'Distribuição de pescados congelados para toda a Grande São Paulo — site e marketing digital.',
+    image: '/assets/cases/funchal-pescados.jpg',
+    url: 'https://funchalpescados.com.br/',
+  },
+  {
+    title: 'Panobianco Academia',
+    category: 'Marketing local',
+    desc: 'Marketing de duas unidades da rede de academias — aquisição de alunos e presença digital local.',
+    image: '/assets/cases/panobianco.jpg',
+    url: 'https://www.panobiancoacademia.com.br/',
+  },
+  {
+    title: 'Colégio Lumira',
+    category: 'Marketing 360º',
+    desc: 'Gestão completa do marketing do colégio — da estratégia ao conteúdo e campanhas de matrícula.',
+    image: '/assets/cases/lumira.jpg',
+    url: 'https://colegiolumira.com/',
+  },
+];
+---
+
+<section id="portfolio" class="overflow-hidden bg-white py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-8 max-w-xl" data-animate>
+      <div class="mb-4 flex items-center gap-3">
+        <span class="h-px w-10 bg-brand"></span>
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">fizemos</span>
+      </div>
+      <h2 class="font-display text-5xl font-bold tracking-tight text-deep md:text-6xl">
+        cases de <span class="text-brand">sucesso</span>
+      </h2>
+      <p class="mt-4 text-lg text-slate-500">
+        Soluções digitais complexas simplificadas através de código limpo e design inteligente.
+      </p>
+    </div>
+
+    <div data-animate>
+      <!-- Palco 3D -->
+      <div
+        id="coverflow"
+        class="relative mx-auto flex h-[520px] items-center justify-center overflow-hidden outline-none [perspective:1600px] md:h-[600px]"
+        tabindex="0"
+        role="group"
+        aria-roledescription="carrossel"
+        aria-label="Cases de sucesso — use as setas do teclado para navegar"
+      >
+        <div
+          id="coverflow-stage"
+          class="relative h-[460px] w-[280px] [transform-style:preserve-3d] md:h-[540px] md:w-[340px]"
+        >
+          {
+            projects.map((p, i) => (
+              <article
+                class="cf-card absolute top-1/2 left-1/2 h-[460px] w-[280px] cursor-pointer overflow-hidden rounded-3xl bg-deep md:h-[540px] md:w-[340px]"
+                data-index={i}
+              >
+                <img
+                  src={p.image}
+                  alt={`Projeto ${p.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                  class="absolute inset-0 h-full w-full object-cover select-none"
+                />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/85" aria-hidden="true" />
+                <span class="absolute top-5 right-5 rounded-full border border-white/20 bg-white/20 px-3 py-1.5 text-[11px] font-bold tracking-wider text-white uppercase backdrop-blur-md">
+                  {p.category}
+                </span>
+
+                <div class="absolute right-0 bottom-0 left-0 z-20 p-6 md:p-7">
+                  <h3 class="font-display text-2xl font-bold leading-tight text-white">{p.title}</h3>
+                  <p class="cf-desc mt-2 text-sm leading-relaxed text-blue-100">{p.desc}</p>
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="cf-visit mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-deep transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    visitar site
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="8 7 17 7 17 16" />
+                    </svg>
+                  </a>
+                </div>
+
+                <div class="cf-dim pointer-events-none absolute inset-0 bg-night" aria-hidden="true" />
+              </article>
+            ))
+          }
+        </div>
+
+        <!-- Setas ao lado dos cards -->
+        <button
+          id="pf-prev"
+          class="group absolute top-1/2 left-2 z-20 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 text-slate-500 shadow-lg backdrop-blur transition-all hover:border-brand hover:bg-brand hover:text-white md:left-6 md:p-4"
+          aria-label="Case anterior"
+        >
+          <svg class="h-6 w-6 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="20" y1="12" x2="4" y2="12" /><polyline points="11 5 4 12 11 19" />
+          </svg>
+        </button>
+        <button
+          id="pf-next"
+          class="group absolute top-1/2 right-2 z-20 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 text-slate-500 shadow-lg backdrop-blur transition-all hover:border-brand hover:bg-brand hover:text-white md:right-6 md:p-4"
+          aria-label="Próximo case"
+        >
+          <svg class="h-6 w-6 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-6 text-center">
+        <span id="cf-counter" class="font-mono text-sm tabular-nums text-slate-400">01 / 06</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cf-card {
+    transition:
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cf-card .cf-dim {
+    opacity: 0.55;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cf-card.is-active {
+    cursor: default;
+  }
+  .cf-card.is-active .cf-dim {
+    opacity: 0;
+  }
+  /* Descrição e CTA só aparecem no card ativo */
+  .cf-card .cf-desc,
+  .cf-card .cf-visit {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition:
+      opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cf-card.is-active .cf-desc,
+  .cf-card.is-active .cf-visit {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0.18s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cf-card,
+    .cf-card .cf-dim,
+    .cf-card .cf-desc,
+    .cf-card .cf-visit {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const wrap = document.getElementById('coverflow');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.cf-card'));
+  const counter = document.getElementById('cf-counter');
+  const n = cards.length;
+  let active = 0;
+  let locked = false;
+
+  const TILT = 12; // rotateY dos vizinhos (graus)
+  const SIDE_TILT = 4; // rotateZ dos vizinhos (graus)
+  const DEPTH = 240; // recuo em Z por posição
+  const SCALE_STEP = 0.14;
+  const DUR = 600; // deve casar com a transição CSS
+
+  const spacing = () => Math.min(260, window.innerWidth * 0.3);
+
+  function render() {
+    const sp = spacing();
+    cards.forEach((card, i) => {
+      let rel = i - active;
+      if (rel > n / 2) rel -= n;
+      if (rel < -n / 2) rel += n;
+      const ax = Math.abs(rel);
+      const visible = ax <= 2;
+      const sc = Math.max(0.4, 1 - ax * SCALE_STEP);
+      card.style.transform = `translate(-50%, -50%) translateX(${rel * sp}px) translateZ(${-ax * DEPTH}px) rotateY(${-rel * TILT}deg) rotateZ(${rel * SIDE_TILT}deg) scale(${sc})`;
+      card.style.opacity = visible ? '1' : '0';
+      card.style.pointerEvents = visible ? 'auto' : 'none';
+      card.classList.toggle('is-active', rel === 0);
+      card.setAttribute('aria-hidden', String(!visible));
+    });
+    if (counter)
+      counter.textContent = `${String(active + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
+  }
+
+  function goTo(i: number) {
+    if (locked) return;
+    locked = true;
+    window.setTimeout(() => (locked = false), DUR);
+    active = ((i % n) + n) % n;
+    render();
+  }
+
+  cards.forEach((card, i) => card.addEventListener('click', () => goTo(i === active ? active + 1 : i)));
+
+  // O botão "visitar site" não deve girar o carrossel junto
+  document.querySelectorAll('.cf-visit').forEach((a) => a.addEventListener('click', (e) => e.stopPropagation()));
+
+  document.getElementById('pf-prev')?.addEventListener('click', () => goTo(active - 1));
+  document.getElementById('pf-next')?.addEventListener('click', () => goTo(active + 1));
+  wrap?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goTo(active + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goTo(active - 1);
+    }
+  });
+  window.addEventListener('resize', render, { passive: true });
+  render();
+</script>

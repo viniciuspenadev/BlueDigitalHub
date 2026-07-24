@@ -1,0 +1,382 @@
+---
+// Quiz-diagnóstico de marketing. Cada opção pontua 0–3; a nota final (0–100)
+// gera o veredito, e as perguntas com nota baixa viram "gargalos" com o
+// serviço que os resolve.
+const quiz = [
+  {
+    q: 'Como sua empresa atrai clientes hoje?',
+    service: 'Growth & Performance',
+    options: [
+      { t: 'Quase tudo por indicação e boca a boca', p: 0 },
+      { t: 'Redes sociais, de forma orgânica', p: 1 },
+      { t: 'Anúncios pagos (Google / Meta)', p: 2 },
+      { t: 'Vários canais integrados e previsíveis', p: 3 },
+    ],
+  },
+  {
+    q: 'Você sabe o retorno (ROI) de cada ação de marketing?',
+    service: 'Inteligência de Dados & BI',
+    options: [
+      { t: 'Não faço ideia do retorno', p: 0 },
+      { t: 'Olho só curtidas e seguidores', p: 1 },
+      { t: 'Vejo vendas, mas sem saber a origem', p: 2 },
+      { t: 'Tenho métricas e dashboards claros', p: 3 },
+    ],
+  },
+  {
+    q: 'Com que frequência você publica conteúdo ou roda campanhas?',
+    service: 'Conteúdo & Social',
+    options: [
+      { t: 'Raramente, quando sobra tempo', p: 0 },
+      { t: 'De forma esporádica', p: 1 },
+      { t: 'Semanalmente', p: 2 },
+      { t: 'De forma constante e planejada', p: 3 },
+    ],
+  },
+  {
+    q: 'Sua marca tem identidade e posicionamento definidos?',
+    service: 'Branding Estratégico',
+    options: [
+      { t: 'Não, é tudo no improviso', p: 0 },
+      { t: 'Tenho um logo, mas sem estratégia', p: 1 },
+      { t: 'Tenho identidade, falta consistência', p: 2 },
+      { t: 'Marca forte, clara e consistente', p: 3 },
+    ],
+  },
+  {
+    q: 'Seu site ou loja transforma visitantes em clientes?',
+    service: 'Web & E-commerce',
+    options: [
+      { t: 'Não tenho site (ou ele não converte)', p: 0 },
+      { t: 'Tenho, mas gera pouquíssimo contato', p: 1 },
+      { t: 'Gera alguns, mas dá pra melhorar', p: 2 },
+      { t: 'Converte bem e é otimizado', p: 3 },
+    ],
+  },
+];
+---
+
+<section id="contact" class="relative overflow-hidden bg-night py-28">
+  <div class="pointer-events-none absolute top-0 right-1/4 h-72 w-72 rounded-full bg-brand/15 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute bottom-0 left-[-5%] h-80 w-80 rounded-full bg-deep/20 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-2">
+    <div data-animate>
+      <div class="mb-4 flex items-center gap-3">
+        <span class="h-px w-10 bg-blue-400"></span>
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-blue-400">contato</span>
+      </div>
+      <h2 class="mb-6 font-display text-5xl font-bold tracking-tight text-white md:text-6xl">
+        vamos construir algo <span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">incrível</span>?
+      </h2>
+      <p class="mb-12 text-lg leading-relaxed text-slate-400">
+        Responda 5 perguntas rápidas e receba um diagnóstico do seu marketing na hora — com os principais gargalos e
+        o caminho pra destravar resultados. Sem custo.
+      </p>
+
+      <div class="space-y-6">
+        <a href="mailto:contato@bluedigitalhub.com.br" class="group flex items-center">
+          <span class="mr-5 rounded-2xl border border-white/10 bg-white/5 p-4 transition-transform group-hover:scale-110">
+            <svg class="h-6 w-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" />
+            </svg>
+          </span>
+          <span>
+            <span class="block text-lg font-bold text-white">Email</span>
+            <span class="text-slate-400">contato@bluedigitalhub.com.br</span>
+          </span>
+        </a>
+
+        <a href="https://wa.me/5511920932633" target="_blank" rel="noopener" class="group flex items-center">
+          <span class="mr-5 rounded-2xl border border-white/10 bg-white/5 p-4 transition-transform group-hover:scale-110">
+            <svg class="h-6 w-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </span>
+          <span>
+            <span class="block text-lg font-bold text-white">WhatsApp</span>
+            <span class="text-slate-400">+55 (11) 92093-2633</span>
+          </span>
+        </a>
+
+        <div class="flex items-center">
+          <span class="mr-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <svg class="h-6 w-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
+            </svg>
+          </span>
+          <span>
+            <span class="block text-lg font-bold text-white">Blue Hub Central</span>
+            <span class="text-slate-400">São Paulo, SP — Brasil</span>
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5 pt-2">
+          <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+            <img src="/assets/certs/google-ads.webp" alt="Google Ads — Parceiro Certificado" loading="lazy" class="h-9 w-auto" />
+          </span>
+          <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+            <img src="/assets/certs/meta-business.webp" alt="Meta Business Partner" loading="lazy" class="h-9 w-auto" />
+          </span>
+          <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+            <img src="/assets/certs/meta-tech-provider.webp" alt="Meta Tech Provider" loading="lazy" class="h-9 w-auto" />
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      data-animate
+      class="relative rounded-3xl border border-slate-100 bg-white p-8 shadow-2xl shadow-deep/5 md:p-10"
+    >
+      <div id="quiz" class="relative">
+        <!-- Cabeçalho + barra de progresso -->
+        <div id="quiz-head" class="mb-6">
+          <span class="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-brand">diagnóstico gratuito</span>
+          <h3 class="font-display text-2xl font-bold text-deep">Descubra o potencial do seu marketing</h3>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+              <div id="quiz-bar" class="h-full w-0 rounded-full bg-brand transition-[width] duration-500 ease-out"></div>
+            </div>
+            <span id="quiz-count" class="shrink-0 font-mono text-xs text-slate-400">1/{quiz.length}</span>
+          </div>
+        </div>
+
+        <!-- Perguntas -->
+        <div id="quiz-steps">
+          {
+            quiz.map((item, i) => (
+              <div class="quiz-step" data-step={i} data-service={item.service} data-question={item.q} hidden={i !== 0}>
+                <h4 class="mb-5 font-display text-lg font-bold leading-snug text-deep">{item.q}</h4>
+                <div class="space-y-2.5">
+                  {item.options.map((o) => (
+                    <button
+                      type="button"
+                      data-points={o.p}
+                      class="quiz-opt group flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-left text-sm font-medium text-slate-700 transition-all hover:border-brand hover:bg-white hover:shadow-md"
+                    >
+                      <span>{o.t}</span>
+                      <svg class="h-4 w-4 shrink-0 -translate-x-1 text-brand opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </button>
+                  ))}
+                </div>
+                {i > 0 && (
+                  <button type="button" class="quiz-back mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 transition-colors hover:text-brand">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="19" y1="12" x2="5" y2="12" />
+                      <polyline points="12 19 5 12 12 5" />
+                    </svg>
+                    voltar
+                  </button>
+                )}
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Portão: contato antes de liberar o resultado -->
+        <div id="quiz-gate" hidden>
+          <div class="mb-6 text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand/10 text-brand">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-deep">Seu diagnóstico está pronto</h3>
+            <p class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-slate-500">
+              Preencha seus dados para ver sua nota, os gargalos identificados e o caminho pra destravar resultados.
+            </p>
+          </div>
+
+          <form id="lead-form" class="space-y-3">
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <input
+                required
+                name="nome"
+                placeholder="Seu nome"
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-brand"
+              />
+              <input
+                required
+                type="email"
+                name="email"
+                placeholder="E-mail da empresa"
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-brand"
+              />
+            </div>
+            <input
+              required
+              name="whatsapp"
+              inputmode="tel"
+              placeholder="WhatsApp (com DDD)"
+              class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-brand"
+            />
+            <button
+              type="submit"
+              class="flex w-full items-center justify-center rounded-xl bg-brand py-4 font-bold text-white shadow-lg shadow-brand/20 transition-all hover:-translate-y-1 hover:bg-deep"
+            >
+              Ver meu diagnóstico
+              <svg class="ml-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+              </svg>
+            </button>
+            <p class="text-center text-xs text-slate-400">Diagnóstico sem custo — seus dados ficam seguros.</p>
+          </form>
+        </div>
+
+        <!-- Resultado (liberado após o portão) -->
+        <div id="quiz-result" hidden>
+          <div class="text-center">
+            <div id="score-ring" class="relative mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-slate-100">
+              <div class="absolute inset-[7px] rounded-full bg-white"></div>
+              <div class="relative flex items-baseline">
+                <span id="score-num" class="font-display text-4xl font-bold text-deep">0</span>
+                <span class="ml-0.5 text-sm font-semibold text-slate-400">/100</span>
+              </div>
+            </div>
+            <h3 id="result-title" class="mt-5 font-display text-2xl font-bold text-deep"></h3>
+            <p id="result-text" class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-slate-500"></p>
+          </div>
+
+          <div id="result-gaps" class="mt-6 space-y-2"></div>
+
+          <div class="mt-7 rounded-xl border border-slate-100 bg-slate-50 px-4 py-4 text-center">
+            <p class="text-sm leading-relaxed text-slate-600">
+              Nossa equipe vai chegar com o <span class="font-semibold text-deep">plano de ação detalhado</span> no seu
+              WhatsApp. Fique de olho! 👋
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const quizEl = document.getElementById('quiz');
+  if (quizEl) {
+    const steps = Array.from(quizEl.querySelectorAll<HTMLElement>('.quiz-step'));
+    const total = steps.length;
+    const bar = document.getElementById('quiz-bar')!;
+    const count = document.getElementById('quiz-count')!;
+    const head = document.getElementById('quiz-head')!;
+    const stepsWrap = document.getElementById('quiz-steps')!;
+    const result = document.getElementById('quiz-result')!;
+    const gapsWrap = document.getElementById('result-gaps')!;
+    const scoreNum = document.getElementById('score-num')!;
+    const scoreRing = document.getElementById('score-ring')!;
+    const resultTitle = document.getElementById('result-title')!;
+    const resultText = document.getElementById('result-text')!;
+    const gate = document.getElementById('quiz-gate')!;
+    const leadForm = document.getElementById('lead-form') as HTMLFormElement | null;
+
+    const answers: (number | null)[] = new Array(total).fill(null);
+
+    const show = (i: number) => {
+      steps.forEach((s, idx) => (s.hidden = idx !== i));
+      bar.style.width = `${(i / total) * 100}%`;
+      count.textContent = `${i + 1}/${total}`;
+    };
+
+    // Faixas de veredito por nota (0–100).
+    const tiers = [
+      {
+        max: 40,
+        title: 'Alto potencial inexplorado',
+        text: 'Há muita oportunidade parada na mesa. Com a estratégia certa, o crescimento pode vir rápido — o passo mais difícil, reconhecer os gargalos, você já deu.',
+      },
+      {
+        max: 70,
+        title: 'No caminho, mas com gargalos',
+        text: 'Você já acerta em várias frentes, mas alguns pontos estão travando seus resultados. Destravá-los tende a gerar um salto de performance.',
+      },
+      {
+        max: 100,
+        title: 'Máquina quase redonda',
+        text: 'Seu marketing está maduro. O foco agora é otimização fina e escala — extrair o máximo do que já funciona.',
+      },
+    ];
+
+    steps.forEach((step, i) => {
+      step.querySelectorAll<HTMLButtonElement>('.quiz-opt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          answers[i] = Number(btn.dataset.points);
+          if (i + 1 < total) show(i + 1);
+          else showGate();
+        });
+      });
+      step.querySelector<HTMLButtonElement>('.quiz-back')?.addEventListener('click', () => show(i - 1));
+    });
+
+    // Após a última pergunta, pede o contato ANTES de revelar o diagnóstico.
+    const showGate = () => {
+      head.hidden = true;
+      stepsWrap.hidden = true;
+      bar.style.width = '100%';
+      gate.hidden = false;
+    };
+
+    const renderResult = () => {
+      const points = answers.reduce<number>((a, b) => a + (b || 0), 0);
+      const score = Math.round((points / (total * 3)) * 100);
+      const tier = tiers.find((t) => score <= t.max) || tiers[tiers.length - 1];
+
+      // Anel de progresso (conic-gradient) + contagem animada da nota.
+      scoreRing.style.background = `conic-gradient(var(--color-brand) ${score * 3.6}deg, #e2e8f0 0deg)`;
+      let n = 0;
+      const stepUp = Math.max(1, Math.ceil(score / 24));
+      const tick = () => {
+        n = Math.min(score, n + stepUp);
+        scoreNum.textContent = String(n);
+        if (n < score) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+
+      resultTitle.textContent = tier.title;
+      resultText.textContent = tier.text;
+
+      // Gargalos: perguntas com nota baixa (<= 1) viram recomendação de serviço.
+      gapsWrap.innerHTML = '';
+      const gaps = steps.filter((_, i) => (answers[i] ?? 0) <= 1);
+      if (gaps.length) {
+        const label = document.createElement('p');
+        label.className = 'mb-1 text-sm font-semibold text-deep';
+        label.textContent = gaps.length === 1 ? '1 gargalo identificado:' : `${gaps.length} gargalos identificados:`;
+        gapsWrap.appendChild(label);
+        gaps.forEach((s) => {
+          const row = document.createElement('div');
+          row.className = 'flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3';
+          row.innerHTML =
+            '<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">' +
+            '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/></svg>' +
+            `</span><span class="text-sm text-slate-600"><span class="font-semibold text-deep">${s.dataset.service}</span> <span class="text-slate-400">— ${s.dataset.question}</span></span>`;
+          gapsWrap.appendChild(row);
+        });
+      }
+
+      gate.hidden = true;
+      result.hidden = false;
+    };
+
+    leadForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(leadForm);
+      const points = answers.reduce<number>((a, b) => a + (b || 0), 0);
+      const payload = {
+        nome: fd.get('nome'),
+        email: fd.get('email'),
+        whatsapp: fd.get('whatsapp'),
+        score: Math.round((points / (total * 3)) * 100),
+        respostas: answers,
+      };
+      // TODO(envio): plugar o destino real usando `payload`. Opções:
+      //   fetch('/api/lead', { method: 'POST', body: JSON.stringify(payload) })
+      //   ou abrir o WhatsApp: window.open(`https://wa.me/5511920932633?text=${encodeURIComponent(...)}`)
+      console.log('[quiz] lead pronto para envio:', payload);
+      renderResult();
+    });
+  }
+</script>

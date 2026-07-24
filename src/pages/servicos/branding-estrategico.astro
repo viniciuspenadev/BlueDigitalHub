@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Faq from '../../components/Faq.astro';
+
+const title = 'Branding Estratégico | Agência de Branding em São Paulo — BlueDigital Hub';
+const description =
+  'Agência de branding estratégico em São Paulo. Construímos marcas com propósito, identidade visual, naming e posicionamento que se destacam e geram valor. Fale com a BlueDigital Hub.';
+
+const deliverables = [
+  {
+    title: 'Diagnóstico & Posicionamento',
+    desc: 'Imersão no negócio, análise de concorrência e definição do território de marca — onde você compete e por quê vence.',
+    icon: 'compass',
+  },
+  {
+    title: 'Naming & Arquitetura de Marca',
+    desc: 'Criação ou refinamento de nomes, submarcas e a estrutura que organiza todo o seu portfólio.',
+    icon: 'tag',
+  },
+  {
+    title: 'Identidade Visual',
+    desc: 'Logotipo, paleta, tipografia, grafismos e sistema visual completo, prontos para qualquer aplicação.',
+    icon: 'palette',
+  },
+  {
+    title: 'Tom de Voz & Verbal',
+    desc: 'Como sua marca fala, escreve e se posiciona — do slogan às respostas nas redes sociais.',
+    icon: 'quote',
+  },
+  {
+    title: 'Brand Guidelines',
+    desc: 'Manual de marca completo para garantir consistência entre equipes, agências e fornecedores.',
+    icon: 'book',
+  },
+  {
+    title: 'Ativação de Marca',
+    desc: 'Levamos a nova identidade para o site, redes, campanhas e pontos de contato com o cliente.',
+    icon: 'rocket',
+  },
+];
+
+const icons: Record<string, string> = {
+  compass: '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+  tag: '<path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>',
+  palette:
+    '<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
+  quote:
+    '<path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  rocket:
+    '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+};
+
+const process = [
+  {
+    n: '01',
+    title: 'Descoberta',
+    desc: 'Entrevistas, workshops e pesquisa para entender negócio, público e concorrência a fundo.',
+  },
+  {
+    n: '02',
+    title: 'Estratégia',
+    desc: 'Definição de propósito, posicionamento, arquétipo e a promessa central da marca.',
+  },
+  {
+    n: '03',
+    title: 'Criação',
+    desc: 'Desenvolvimento da identidade visual e verbal, testada em aplicações reais.',
+  },
+  {
+    n: '04',
+    title: 'Entrega & Ativação',
+    desc: 'Brand guidelines, arquivos finais e implementação nos canais do seu negócio.',
+  },
+];
+
+const faqItems = [
+  {
+    q: 'O que é branding estratégico?',
+    a: 'Branding estratégico é o processo de construir uma marca a partir de um propósito e posicionamento claros, e não apenas de um logotipo bonito. Envolve estratégia, naming, identidade visual, tom de voz e diretrizes de uso — tudo alinhado aos objetivos de negócio para gerar reconhecimento, preferência e valor.',
+  },
+  {
+    q: 'Qual a diferença entre branding e identidade visual?',
+    a: 'A identidade visual (logo, cores, tipografia) é a parte visível da marca. O branding é o conjunto maior: a estratégia, o posicionamento, a percepção e a experiência que as pessoas têm com a sua empresa. A identidade visual é uma consequência do branding bem feito.',
+  },
+  {
+    q: 'Quanto tempo leva um projeto de branding?',
+    a: 'Depende do escopo. Um projeto de branding estratégico completo costuma levar de 4 a 10 semanas, incluindo descoberta, estratégia, criação e entrega do manual de marca. Projetos de reposicionamento de marcas maiores podem levar mais tempo.',
+  },
+  {
+    q: 'Vocês fazem branding para empresas de qualquer segmento?',
+    a: 'Sim. A BlueDigital Hub já desenvolveu marcas para produtos SaaS, educação, logística, alimentação, fitness e serviços. O método estratégico se adapta ao segmento — o que muda é a pesquisa e o território de marca de cada negócio.',
+  },
+  {
+    q: 'Já tenho uma marca. Vocês fazem rebranding?',
+    a: 'Fazemos. O rebranding parte do que já existe: avaliamos o que tem equity (valor acumulado) e deve ser preservado, e o que precisa evoluir. O objetivo é modernizar e reposicionar sem perder o reconhecimento já conquistado.',
+  },
+];
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Branding Estratégico',
+    serviceType: 'Branding e identidade de marca',
+    provider: { '@id': 'https://bluedigitalhub.com.br/#agencia' },
+    areaServed: { '@type': 'Country', name: 'Brasil' },
+    description,
+    url: 'https://bluedigitalhub.com.br/servicos/branding-estrategico/',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://bluedigitalhub.com.br/' },
+      { '@type': 'ListItem', position: 2, name: 'Serviços', item: 'https://bluedigitalhub.com.br/#services' },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Branding Estratégico',
+        item: 'https://bluedigitalhub.com.br/servicos/branding-estrategico/',
+      },
+    ],
+  },
+];
+---
+
+<Base title={title} description={description} schemas={schemas}>
+  <Header heroTheme="dark" />
+
+  <main>
+    <!-- HERO -->
+    <section class="relative flex min-h-[88svh] items-center overflow-hidden bg-night pt-32 pb-20">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]"
+        >
+        </div>
+        <div class="absolute -top-40 right-[-10%] h-[560px] w-[560px] rounded-full bg-brand/20 blur-3xl"></div>
+        <div class="absolute bottom-[-30%] left-[-10%] h-[460px] w-[460px] rounded-full bg-deep/30 blur-3xl"></div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-7xl px-6">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 flex items-center gap-2 font-mono text-xs text-slate-400" aria-label="Trilha de navegação">
+          <a href="/" class="transition-colors hover:text-blue-400">Início</a>
+          <span aria-hidden="true">/</span>
+          <a href="/#services" class="transition-colors hover:text-blue-400">Serviços</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-blue-400">Branding Estratégico</span>
+        </nav>
+
+        <div class="mb-6 flex items-center gap-3">
+          <span class="h-px w-10 bg-blue-400"></span>
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-blue-400">serviço · 01</span>
+        </div>
+
+        <h1 class="max-w-4xl font-display font-bold leading-[0.95] tracking-tighter text-white text-[clamp(2.8rem,7vw,6rem)]">
+          Branding <span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">estratégico</span>
+          que gera valor.
+        </h1>
+
+        <p class="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
+          Marca não é só um logotipo. Construímos marcas com propósito, posicionamento e identidade que se destacam no
+          mercado, criam conexão com o público e sustentam o crescimento do seu negócio.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/#contact"
+            class="group inline-flex items-center justify-center rounded-full bg-brand px-8 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-xl hover:shadow-brand/30"
+          >
+            quero construir minha marca
+            <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+            </svg>
+          </a>
+          <a
+            href="#entregas"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-medium text-white transition-colors hover:border-blue-400 hover:text-blue-400"
+            >ver o que entregamos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO / DEFINIÇÃO -->
+    <section class="bg-white py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:gap-16">
+        <div>
+          <div class="mb-4 flex items-center gap-3">
+            <span class="h-px w-10 bg-brand"></span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">o que é</span>
+          </div>
+          <h2 class="font-display text-4xl font-bold tracking-tight text-deep md:text-5xl">
+            Tudo começa no posicionamento
+          </h2>
+        </div>
+        <div class="space-y-5 text-lg leading-relaxed text-slate-600">
+          <p>
+            Uma marca forte é o que faz o cliente escolher você antes mesmo de comparar preço. O
+            <strong class="font-semibold text-deep">branding estratégico</strong> é o trabalho que transforma uma empresa
+            comum em uma marca memorável, com um posicionamento claro e uma identidade coerente em todos os pontos de contato.
+          </p>
+          <p>
+            Como agência de branding, não entregamos apenas um logotipo bonito. Entregamos estratégia: definimos por que
+            sua marca existe, para quem ela fala, como ela se diferencia e de que forma ela deve ser percebida — e só
+            então traduzimos tudo isso em identidade visual e verbal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTREGAS -->
+    <section id="entregas" class="bg-slate-50/60 py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-14 max-w-2xl">
+          <div class="mb-4 flex items-center gap-3">
+            <span class="h-px w-10 bg-brand"></span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">entregas</span>
+          </div>
+          <h2 class="font-display text-4xl font-bold tracking-tight text-deep md:text-5xl">
+            O que está incluído no projeto
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            deliverables.map((d) => (
+              <article class="group rounded-3xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-xl hover:shadow-brand/10">
+                <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+                  <svg
+                    class="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    set:html={icons[d.icon]}
+                  />
+                </span>
+                <h3 class="mt-6 font-display text-xl font-bold text-deep">{d.title}</h3>
+                <p class="mt-2 leading-relaxed text-slate-500">{d.desc}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="bg-white py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-14 max-w-2xl">
+          <div class="mb-4 flex items-center gap-3">
+            <span class="h-px w-10 bg-brand"></span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">como funciona</span>
+          </div>
+          <h2 class="font-display text-4xl font-bold tracking-tight text-deep md:text-5xl">
+            Nosso processo em 4 etapas
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            process.map((p) => (
+              <div class="relative border-t-2 border-slate-100 pt-6">
+                <span class="font-display text-5xl font-bold text-brand/15">{p.n}</span>
+                <h3 class="mt-3 font-display text-xl font-bold text-deep">{p.title}</h3>
+                <p class="mt-2 leading-relaxed text-slate-500">{p.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FAIXA DE DESTAQUE -->
+    <section class="bg-deep py-20">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="font-display text-2xl font-medium leading-snug text-white md:text-4xl">
+          “Uma marca é o que as pessoas dizem sobre você quando você não está na sala. O branding estratégico garante
+          que digam a coisa certa.”
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ (com dados estruturados próprios) -->
+    <Faq
+      titlePlain="dúvidas sobre"
+      titleAccent="branding estratégico"
+      items={faqItems}
+    />
+
+    <!-- CTA FINAL -->
+    <section class="relative overflow-hidden bg-night py-24">
+      <div class="pointer-events-none absolute top-0 left-1/3 h-72 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-4xl px-6 text-center">
+        <h2 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
+          Pronto para construir uma marca memorável?
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-lg text-slate-300">
+          Agende uma consultoria estratégica gratuita e descubra como o branding pode posicionar o seu negócio para
+          crescer.
+        </p>
+        <a
+          href="/#contact"
+          class="mt-9 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-bold text-deep transition-all hover:-translate-y-0.5 hover:shadow-xl"
+        >
+          falar com a BlueDigital Hub
+          <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

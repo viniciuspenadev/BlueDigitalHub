@@ -1,0 +1,66 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-200 bg-white pt-20 pb-10">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <a href="/" class="group mb-6 flex items-center">
+          <svg class="mr-2 h-6 w-6 text-brand transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 4.5 14h5.5l-1 8L18.5 9.5H12L13 2z" />
+          </svg>
+          <span class="font-display text-2xl font-bold tracking-tight text-deep"
+            >BlueDigital<span class="font-medium text-brand">Hub</span></span
+          >
+        </a>
+        <p class="mb-8 max-w-sm leading-relaxed text-slate-500">
+          Agência de marketing estratégico em São Paulo. Unimos criatividade, dados e tecnologia para acelerar o
+          crescimento do seu negócio.
+        </p>
+        <a
+          href="https://www.instagram.com/bluedigital.hub/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram da BlueDigital Hub"
+          class="inline-flex rounded-full border border-slate-100 bg-slate-50 p-3 text-slate-400 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-brand"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+
+      <nav aria-label="Serviços">
+        <h4 class="mb-6 font-display text-lg font-bold text-deep">Serviços</h4>
+        <ul class="space-y-4 text-slate-500">
+          <li><a href="/servicos/branding-estrategico/" class="transition-colors hover:text-brand">Branding Estratégico</a></li>
+          <li><a href="/#services" class="transition-colors hover:text-brand">Growth & Performance</a></li>
+          <li><a href="/#services" class="transition-colors hover:text-brand">Inbound Marketing</a></li>
+          <li><a href="/#services" class="transition-colors hover:text-brand">Web & E-commerce</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Empresa">
+        <h4 class="mb-6 font-display text-lg font-bold text-deep">Empresa</h4>
+        <ul class="space-y-4 text-slate-500">
+          <li><a href="/#manifesto" class="transition-colors hover:text-brand">Sobre nós</a></li>
+          <li><a href="/#portfolio" class="transition-colors hover:text-brand">Portfólio</a></li>
+          <li><a href="/#contact" class="transition-colors hover:text-brand">Contato</a></li>
+          <li>
+            <a href="https://www.instagram.com/bluedigital.hub/" target="_blank" rel="noopener" class="transition-colors hover:text-brand">Instagram</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-between border-t border-slate-100 pt-8 text-sm text-slate-400 md:flex-row"
+    >
+      <p>&copy; {year} BlueDigital Hub. Todos os direitos reservados.</p>
+      <p class="mt-2 md:mt-0">Feito com <span class="mx-1">💙</span> em São Paulo</p>
+    </div>
+  </div>
+</footer>

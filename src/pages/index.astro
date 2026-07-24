@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Preloader from '../components/Preloader.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Manifesto from '../components/Manifesto.astro';
+import Services from '../components/Services.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base>
+  <Preloader />
+  <Header />
+  <main>
+    <Hero />
+    <Marquee />
+    <Manifesto />
+    <Services />
+    <Portfolio />
+    <Faq />
+    <Contact />
+  </main>
+  <Footer />
+</Base>
+
+<script src="../scripts/main.js"></script>

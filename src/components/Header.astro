@@ -1,0 +1,351 @@
+---
+interface Props {
+  /** 'dark' quando a página abre com um hero escuro — deixa o header claro no topo. */
+  heroTheme?: 'light' | 'dark';
+}
+const { heroTheme = 'light' } = Astro.props;
+
+// Serviços do mega-menu (lista tipográfica, sem ícones).
+const services = [
+  { title: 'Branding Estratégico', tagline: 'Marca, identidade e posicionamento', href: '/servicos/branding-estrategico/' },
+  { title: 'Growth & Performance', tagline: 'Campanhas de aquisição e conversão', href: '/#services' },
+  { title: 'Inteligência de Dados', tagline: 'Analytics e decisões por dados', href: '/#services' },
+  { title: 'Conteúdo & Social', tagline: 'Conteúdo que engaja e converte', href: '/#services' },
+  { title: 'Métricas & BI', tagline: 'Dashboards e relatórios acionáveis', href: '/#services' },
+  { title: 'Campanhas Off-line', tagline: 'Do digital ao físico', href: '/#services' },
+  { title: 'Inbound Marketing', tagline: 'Atração e nutrição de leads', href: '/#services' },
+  { title: 'Web & E-commerce', tagline: 'Sites e lojas de alta conversão', href: '/#services' },
+  { title: 'Jornada & Agentes de IA', tagline: 'Automação com inteligência artificial', href: '/#services' },
+];
+---
+
+<header id="site-header" class:list={['fixed top-0 left-0 z-50 w-full', heroTheme === 'dark' && 'on-dark']}>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+    <a href="/" class="group flex items-center" aria-label="BlueDigital Hub — início">
+      <svg class="mr-2 h-6 w-6 text-brand transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13 2 4.5 14h5.5l-1 8L18.5 9.5H12L13 2z" />
+      </svg>
+      <span class="brand-text font-display text-xl font-bold tracking-tight text-deep"
+        >BlueDigital<span class="font-medium text-brand">Hub</span></span
+      >
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
+      <button
+        id="mega-trigger"
+        class="nav-link flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mega"
+      >
+        serviços
+        <svg class="mega-chevron h-4 w-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <a href="/#portfolio" class="nav-link rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand">portfólio</a>
+      <a href="/#contact" class="nav-link rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand">contato</a>
+      <a
+        href="/#contact"
+        class="ml-3 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-deep hover:shadow-lg hover:shadow-brand/30"
+        >iniciar projeto</a
+      >
+    </nav>
+
+    <button id="menu-open" class="burger inline-flex flex-col justify-center gap-[5px] p-2 text-deep md:hidden" aria-label="Abrir menu">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <!-- MEGA-MENU (card flutuante) -->
+  <div id="mega" class="fixed inset-0 z-40">
+    <div id="mega-overlay" class="absolute inset-0"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 pt-[84px]">
+      <div class="mega-card grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/10 md:grid-cols-[0.9fr_2.1fr]">
+        <!-- Coluna destaque -->
+        <aside class="relative flex flex-col justify-between overflow-hidden bg-night p-8 text-white">
+          <div class="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-brand/25 blur-3xl"></div>
+          <div class="relative">
+            <span class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-300">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-blue-400"></span>
+              </span>
+              full-service
+            </span>
+            <h3 class="mt-4 font-display text-2xl font-bold leading-tight">9 soluções, uma única sintonia.</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Da estratégia à execução: tudo o que a sua marca precisa para crescer, dentro de casa.
+            </p>
+          </div>
+          <a
+            href="/#services"
+            class="mega-link relative mt-6 inline-flex items-center gap-2 self-start rounded-full bg-white px-5 py-2.5 text-sm font-bold text-deep transition-transform hover:-translate-y-0.5"
+          >
+            ver todos os serviços
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+            </svg>
+          </a>
+        </aside>
+
+        <!-- Grade de serviços -->
+        <div class="grid gap-1 p-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            services.map((s, i) => (
+              <a href={s.href} class="mega-item group/item block rounded-2xl px-4 py-3 transition-colors hover:bg-slate-50" style={`--i:${i}`}>
+                <span class="flex items-center gap-1.5 font-display text-sm font-bold text-deep">
+                  {s.title}
+                  <svg class="mega-arrow h-3.5 w-3.5 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <span class="mt-0.5 block text-xs leading-snug text-slate-500">{s.tagline}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile em tela cheia -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[90] flex translate-x-full flex-col bg-deep text-white transition-transform duration-500 ease-out md:hidden"
+>
+  <div class="flex items-center justify-between px-6 py-5">
+    <span class="font-display text-xl font-bold">BlueDigital<span class="font-medium text-blue-300">Hub</span></span>
+    <button id="menu-close" class="p-2 text-white/80 transition-transform active:scale-95" aria-label="Fechar menu">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="5" y1="5" x2="19" y2="19" />
+        <line x1="19" y1="5" x2="5" y2="19" />
+      </svg>
+    </button>
+  </div>
+
+  <nav class="flex flex-1 flex-col gap-1 overflow-y-auto px-8 pt-6" aria-label="Menu mobile">
+    <!-- Serviços expansível -->
+    <div class="border-b border-white/10 pb-4">
+      <button id="m-svc-toggle" class="flex w-full items-center justify-between py-2 text-left" aria-expanded="false" aria-controls="m-svc-list">
+        <span class="font-display text-4xl font-bold tracking-tight text-white">serviços</span>
+        <svg id="m-svc-chevron" class="h-7 w-7 text-blue-300 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div id="m-svc-list" class="overflow-hidden">
+        <div class="space-y-1 pt-3">
+          {
+            services.map((s) => (
+              <a href={s.href} class="m-link block rounded-xl px-2 py-2.5 text-white/80 transition-colors hover:bg-white/5 hover:text-white">
+                <span class="text-base font-medium">{s.title}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <a href="/#portfolio" class="m-link border-b border-white/10 py-4 font-display text-4xl font-bold tracking-tight text-white/90 transition-colors hover:text-white">portfólio</a>
+    <a href="/#contact" class="m-link py-4 font-display text-4xl font-bold tracking-tight text-white/90 transition-colors hover:text-white">contato</a>
+  </nav>
+
+  <div class="px-8 pb-12 pt-4">
+    <a href="/#contact" class="m-link block w-full rounded-full bg-white py-4 text-center font-bold text-deep transition-transform active:scale-[0.98]">iniciar projeto →</a>
+  </div>
+</div>
+
+<style>
+  /* ---------- Header sobre hero escuro (texto claro no topo) ---------- */
+  /* Aplica só enquanto está no topo: ao rolar (is-scrolled) ou abrir o mega
+     (mega-open) a barra ganha fundo branco e o texto volta ao escuro padrão. */
+  #site-header.on-dark:not(.is-scrolled):not(.mega-open) .brand-text {
+    color: #fff;
+  }
+  #site-header.on-dark:not(.is-scrolled):not(.mega-open) .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  #site-header.on-dark:not(.is-scrolled):not(.mega-open) .nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  #site-header.on-dark:not(.is-scrolled):not(.mega-open) .burger {
+    color: #fff;
+  }
+
+  /* ---------- Hambúrguer animado ---------- */
+  /* O layout (display/flex) fica nas classes utilitárias da tag para não
+     sobrepor o `md:hidden` — senão o botão vazaria no desktop. */
+  .burger span {
+    display: block;
+    height: 2px;
+    width: 26px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.3s ease;
+  }
+  .burger span:last-child {
+    width: 18px;
+    align-self: flex-start;
+  }
+  .burger:hover span:last-child,
+  .burger:focus-visible span:last-child {
+    width: 26px;
+  }
+  .burger:active {
+    transform: scale(0.94);
+  }
+
+  /* ---------- Mega-menu ---------- */
+  #mega {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s ease;
+  }
+  .mega-card {
+    transform: translateY(-14px) scale(0.98);
+    transform-origin: top center;
+    opacity: 0;
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease;
+  }
+  #site-header.mega-open #mega {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  #site-header.mega-open .mega-card {
+    transform: none;
+    opacity: 1;
+  }
+  #site-header.mega-open .mega-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Entrada escalonada dos itens */
+  .mega-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.2s ease;
+  }
+  #site-header.mega-open .mega-item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 35ms);
+  }
+
+  .mega-arrow {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+  .mega-item:hover .mega-arrow {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ---------- Submenu mobile expansível ---------- */
+  /* Altura controlada por JS (max-height em px) — lisa e sem borrar,
+     ao contrário de animar grid-template-rows. */
+  #m-svc-list {
+    max-height: 0;
+    transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mega-card,
+    .mega-item,
+    .mega-arrow,
+    .burger span,
+    #m-svc-list {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const trigger = document.getElementById('mega-trigger');
+  const mega = document.getElementById('mega');
+  const overlay = document.getElementById('mega-overlay');
+  let closeTimer: number | undefined;
+
+  const openMega = () => {
+    window.clearTimeout(closeTimer);
+    header?.classList.add('mega-open');
+    trigger?.setAttribute('aria-expanded', 'true');
+  };
+  const closeMega = () => {
+    header?.classList.remove('mega-open');
+    trigger?.setAttribute('aria-expanded', 'false');
+  };
+  const scheduleClose = () => {
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(closeMega, 140);
+  };
+
+  trigger?.addEventListener('mouseenter', openMega);
+  trigger?.addEventListener('focus', openMega);
+  trigger?.addEventListener('click', () => (header?.classList.contains('mega-open') ? closeMega() : openMega()));
+  mega?.addEventListener('mouseenter', () => window.clearTimeout(closeTimer));
+  trigger?.addEventListener('mouseleave', scheduleClose);
+  mega?.addEventListener('mouseleave', scheduleClose);
+  overlay?.addEventListener('click', closeMega);
+  mega?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMega));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMega();
+  });
+
+  // Fundo ao rolar + esconder ao descer (roda em todas as páginas)
+  let lastY = 0;
+  window.addEventListener(
+    'scroll',
+    () => {
+      const y = window.scrollY;
+      header?.classList.toggle('is-scrolled', y > 40);
+      header?.classList.toggle('nav-hidden', y > 240 && y > lastY);
+      lastY = y;
+      closeMega();
+    },
+    { passive: true }
+  );
+
+  // Menu mobile (abrir/fechar)
+  const mobileMenu = document.getElementById('mobile-menu');
+  const setMobile = (open: boolean) => {
+    mobileMenu?.classList.toggle('translate-x-full', !open);
+    document.documentElement.classList.toggle('overflow-hidden', open);
+  };
+  document.getElementById('menu-open')?.addEventListener('click', () => setMobile(true));
+  document.getElementById('menu-close')?.addEventListener('click', () => setMobile(false));
+  mobileMenu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMobile(false)));
+
+  // Submenu mobile expansível (animação por altura em px = lisa e nítida)
+  const mToggle = document.getElementById('m-svc-toggle');
+  const mList = document.getElementById('m-svc-list');
+  const mChevron = document.getElementById('m-svc-chevron');
+  mToggle?.addEventListener('click', () => {
+    if (!mList) return;
+    const isOpen = mToggle.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+      mList.style.maxHeight = '0px';
+    } else {
+      mList.style.maxHeight = `${mList.scrollHeight}px`;
+    }
+    mToggle.setAttribute('aria-expanded', String(!isOpen));
+    mChevron?.classList.toggle('rotate-180', !isOpen);
+  });
+</script>

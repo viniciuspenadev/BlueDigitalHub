@@ -1,0 +1,240 @@
+<section id="hero" class="relative flex min-h-svh flex-col justify-center overflow-hidden bg-white pt-24 pb-16 sm:pt-28">
+  <!-- Fundo: céu azul à direita + grade técnica + brilhos -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <!-- Céu azul concentrado à direita (só no desktop, onde ficam as nuvens) -->
+    <div
+      class="absolute inset-0 hidden bg-[radial-gradient(125%_100%_at_100%_50%,rgba(0,0,191,0.5)_0%,rgba(12,70,230,0.22)_34%,rgba(12,70,230,0)_60%)] lg:block"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(12,70,230,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(12,70,230,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]"
+    >
+    </div>
+    <div class="absolute -top-40 right-[-15%] h-[640px] w-[640px] rounded-full bg-brand/10 blur-3xl"></div>
+    <div class="absolute bottom-[-30%] left-[-10%] h-[480px] w-[480px] rounded-full bg-deep/5 blur-3xl"></div>
+  </div>
+
+  <!-- Cena decorativa: astronauta entre as nuvens (direita) -->
+  <div class="hero-scene pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[54%] lg:block" aria-hidden="true">
+    <!-- atmosfera / céu azul (brilho mais claro no núcleo para levantar as nuvens) -->
+    <div class="absolute right-[-6%] top-1/2 h-[820px] w-[820px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(125,211,252,0.38),rgba(12,70,230,0.16)_45%,transparent_72%)] blur-2xl"></div>
+
+    <!-- nuvens de fundo (menores, mais claras, desfocadas) -->
+    <div class="parallax absolute right-[22%] top-[12%] w-[50%]" data-depth="0.12">
+      <img src="/assets/hero/nuvem-3.webp" alt="" class="cloud w-full opacity-40 blur-[3px]" />
+    </div>
+    <div class="parallax absolute right-[2%] top-[5%] w-[32%]" data-depth="0.28">
+      <img src="/assets/hero/nuvem-2.webp" alt="" class="cloud w-full opacity-70" />
+    </div>
+    <div class="parallax absolute right-[38%] bottom-[30%] w-[42%]" data-depth="0.32">
+      <img src="/assets/hero/nuvem-4.webp" alt="" class="cloud w-full opacity-70" />
+    </div>
+
+    <!-- nuvem da frente (cobre levemente os pés) -->
+    <div class="parallax absolute right-[9%] bottom-[1%] w-[58%]" data-depth="0.42">
+      <img
+        src="/assets/hero/nuvem-1.webp"
+        alt=""
+        class="cloud w-full opacity-95 [filter:drop-shadow(0_20px_40px_rgba(12,70,230,0.12))]"
+      />
+    </div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-6">
+    <div class="hero-badge mb-6 flex items-center gap-3">
+      <span class="h-px w-10 bg-brand"></span>
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">agência de marketing estratégico</span>
+    </div>
+
+    <h1 class="font-display font-bold tracking-tighter leading-[0.92] text-deep text-[clamp(3.5rem,8vw,6.25rem)]">
+      <span class="block overflow-hidden pb-[0.24em] -mb-[0.18em]">
+        <span class="hero-line block">Marketing</span>
+      </span>
+      <span class="block overflow-hidden pb-[0.34em] -mb-[0.28em]">
+        <span class="hero-line block pb-[0.34em] -mb-[0.34em] bg-gradient-to-r from-brand to-sky-400 bg-clip-text text-transparent"
+          >Digital</span
+        >
+      </span>
+      <span class="block overflow-hidden pb-[0.24em] -mb-[0.18em]">
+        <span class="hero-line block">que gera</span>
+      </span>
+      <span class="block overflow-hidden pb-[0.24em] -mb-[0.18em]">
+        <span class="hero-line block">resultados<span class="text-brand">.</span></span>
+      </span>
+    </h1>
+
+    <div class="hero-certs mt-9 flex flex-wrap items-center gap-2.5 sm:gap-3">
+      <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+        <img src="/assets/certs/google-ads.webp" alt="Google Ads — Parceiro Certificado" loading="lazy" class="h-8 w-auto sm:h-10 lg:h-15" />
+      </span>
+      <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+        <img src="/assets/certs/meta-business.webp" alt="Meta Business Partner" loading="lazy" class="h-8 w-auto sm:h-10 lg:h-15" />
+      </span>
+      <span class="inline-flex items-center rounded-lg border border-slate-200 bg-white px-2 py-0.5 shadow-sm">
+        <img src="/assets/certs/meta-tech-provider.webp" alt="Meta Tech Provider" loading="lazy" class="h-8 w-auto sm:h-10 lg:h-15" />
+      </span>
+    </div>
+
+    <div class="hero-sub mt-8 max-w-xl">
+      <p class="text-base leading-relaxed text-slate-500 md:text-lg">
+        Não somos apenas uma agência de marketing digital. Somos o seu hub de aceleração para o seu negócio. Apps
+        nativos, websites e plataformas web e growth marketing em uma única sintonia.
+      </p>
+    </div>
+
+    <div class="hero-cta mt-10 flex flex-wrap gap-4">
+      <a
+        href="#contact"
+        class="group inline-flex items-center justify-center rounded-full bg-brand px-8 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-deep hover:shadow-xl hover:shadow-brand/30"
+      >
+        iniciar projeto
+        <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+        </svg>
+      </a>
+      <a
+        href="#portfolio"
+        class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-4 font-medium text-slate-700 transition-colors hover:border-brand hover:text-brand"
+        >ver portfólio</a
+      >
+    </div>
+  </div>
+
+  <div class="hero-hint absolute bottom-8 left-6 hidden items-center gap-3 md:flex" aria-hidden="true">
+    <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-400">scroll</span>
+    <span class="h-px w-16 bg-slate-300"></span>
+  </div>
+</section>
+
+<!-- Nuvem em primeiro plano sobre o astronauta (sensação de estar nas nuvens) -->
+<img
+  id="cloud-front"
+  src="/assets/hero/nuvem-4.webp"
+  alt=""
+  aria-hidden="true"
+  class="pointer-events-none absolute top-0 left-0 z-40 hidden w-[clamp(240px,27vw,440px)] opacity-0 lg:block"
+/>
+
+<!-- Astronauta viajante: acompanha o scroll contornando o texto -->
+<div
+  id="astro-travel"
+  aria-hidden="true"
+  class="pointer-events-none fixed top-0 left-0 z-30 hidden w-[clamp(340px,36vw,560px)] opacity-0 lg:block"
+>
+  <img id="astro-img" src="/assets/hero/astronauta.webp" alt="" class="w-full" />
+</div>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene = document.querySelector<HTMLElement>('.hero-scene');
+  const hero = document.getElementById('hero');
+  const astro = document.getElementById('astro-travel');
+  const astroImg = document.getElementById('astro-img');
+  const cloudFront = document.getElementById('cloud-front');
+  const W = () => window.innerWidth;
+  const H = () => window.innerHeight;
+
+  // ---------- Nuvens do hero (cena fixa) ----------
+  if (scene && hero) {
+    if (reduced) {
+      gsap.set(scene, { autoAlpha: 1 });
+    } else {
+      gsap.from(scene, { autoAlpha: 0, scale: 0.94, duration: 1.2, ease: 'power3.out', delay: 1.9 });
+      // Movimentos distintos por nuvem: direções, amplitudes, durações e atrasos diferentes
+      const cloudMoves = [
+        { x: -16, y: -14, duration: 9.5, delay: 0.0 },
+        { x: 22, y: -9, duration: 6.5, delay: 0.9 },
+        { x: -24, y: 13, duration: 11.5, delay: 0.4 },
+        { x: 15, y: -20, duration: 8, delay: 1.4 },
+      ];
+      scene.querySelectorAll<HTMLElement>('.cloud').forEach((el, i) => {
+        const m = cloudMoves[i % cloudMoves.length];
+        gsap.to(el, { x: m.x, y: m.y, duration: m.duration, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: m.delay });
+      });
+      const layers = Array.from(scene.querySelectorAll<HTMLElement>('.parallax')).map((l) => ({
+        x: gsap.quickTo(l, 'x', { duration: 0.7, ease: 'power3' }),
+        y: gsap.quickTo(l, 'y', { duration: 0.7, ease: 'power3' }),
+        d: parseFloat(l.getAttribute('data-depth') || '0.2'),
+      }));
+      hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        const mx = (e.clientX - r.left) / r.width - 0.5;
+        const my = (e.clientY - r.top) / r.height - 0.5;
+        layers.forEach((s) => (s.x(-mx * 70 * s.d), s.y(-my * 45 * s.d)));
+      });
+      hero.addEventListener('mouseleave', () => layers.forEach((s) => (s.x(0), s.y(0))));
+    }
+  }
+
+  // ---------- Astronauta viajante (jornada guiada pelo scroll) ----------
+  if (astro && astroImg) {
+    if (reduced) {
+      // Fallback: fica ancorado no hero e rola junto com a página (sem jornada).
+      gsap.set(astro, { position: 'absolute', x: () => W() * 0.5, y: () => H() * 0.14, autoAlpha: 1 });
+    } else {
+      // "Bob" suave na imagem interna (não conflita com a jornada, que move o wrapper)
+      gsap.to(astroImg, { y: 18, rotation: 2.5, duration: 6, ease: 'sine.inOut', repeat: -1, yoyo: true });
+
+      // metade da largura real do astronauta (para centralizar o ponto de parada sem cortar)
+      const half = () => (astro.offsetWidth || 400) / 2;
+
+      // Estado inicial (posição no hero). A OPACIDADE fica a cargo da timeline do
+      // scroll — assim, ao recarregar a página já rolada, o astronauta nasce na
+      // posição certa da jornada (ou some, se já passou dos serviços) em vez de
+      // aparecer solto no rodapé.
+      gsap.set(astro, { x: () => W() * 0.5, y: () => H() * 0.16, scale: 1, autoAlpha: 0 });
+
+      // Jornada: desce pela direita contornando o texto e DIMINUINDO,
+      // faz uma pausa no Manifesto e sobe/some antes de "O que fazemos".
+      gsap
+        .timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            endTrigger: '#services',
+            end: 'top top',
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        })
+        .set(astro, { autoAlpha: 1 }) // visível durante toda a jornada (inclusive ao recarregar no meio dela)
+        .to(astro, { x: () => W() * 0.8 - half(), y: () => H() * 0.42, scale: 0.6, duration: 1.4 }) // voa e para junto ao Manifesto (atrás do texto)
+        .to(astro, { duration: 1 }) // descansa parado ali
+        .to(astro, { autoAlpha: 0, duration: 0.6 }); // some suave ao fim do Manifesto
+
+      // Entrada suave quando a página abre no topo. Aqui torna o wrapper visível
+      // de fato (no progress 0 o `.set` da timeline ainda não renderizou, então
+      // sem isto o astronauta só apareceria após o primeiro scroll). Ao rolar, a
+      // timeline assume o controle da opacidade normalmente.
+      if (window.scrollY < 10) {
+        gsap.to(astro, { autoAlpha: 1, duration: 1, delay: 2 });
+      }
+    }
+  }
+
+  // ---------- Nuvem em primeiro plano sobre o astronauta (sensação de estar nas nuvens) ----------
+  if (cloudFront) {
+    if (reduced) {
+      gsap.set(cloudFront, { autoAlpha: 0 });
+    } else {
+      gsap.set(cloudFront, { x: () => W() * 0.54, y: () => H() * 0.42 });
+      gsap.to(cloudFront, { autoAlpha: 1, duration: 1.2, delay: 2.2 });
+      // flutuação diagonal (x + y), no mesmo estilo das outras nuvens
+      gsap.to(cloudFront, {
+        x: () => W() * 0.54 + 18,
+        y: () => H() * 0.42 - 12,
+        duration: 8.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: 2.2,
+      });
+      // Sem scroll-fade: por ser `absolute`, a nuvem rola embora com o hero.
+    }
+  }
+</script>

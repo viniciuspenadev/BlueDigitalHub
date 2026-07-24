@@ -1,0 +1,172 @@
+---
+const icons: Record<string, string> = {
+  lightbulb:
+    '<path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/><path d="M9 20h6"/><path d="M10 22h4"/>',
+  trending:
+    '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+  barchart:
+    '<line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/>',
+  message:
+    '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  piechart:
+    '<path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>',
+  megaphone:
+    '<path d="m3 11 18-5v12L3 13z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>',
+  globe:
+    '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+  bot: '<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/><path d="M2 14h2"/><path d="M20 14h2"/>',
+};
+
+const services = [
+  {
+    n: '01',
+    title: 'Branding Estratégico',
+    desc: 'Construímos marcas com propósito, identidade e posicionamento que se destacam no mercado.',
+    detail: 'Naming, identidade visual, tom de voz e guidelines completos.',
+    icon: 'lightbulb',
+    href: '/servicos/branding-estrategico/',
+  },
+  {
+    n: '02',
+    title: 'Growth & Performance',
+    desc: 'Campanhas de alta performance focadas em aquisição, conversão e crescimento escalável.',
+    detail: 'Meta Ads, Google Ads, testes A/B e escala orientada a ROI.',
+    icon: 'trending',
+  },
+  {
+    n: '03',
+    title: 'Inteligência de Dados',
+    desc: 'Decisões baseadas em dados reais. Analytics avançado para otimização contínua.',
+    detail: 'Tracking, GA4, Tag Manager e atribuição de resultados.',
+    icon: 'barchart',
+  },
+  {
+    n: '04',
+    title: 'Conteúdo & Social',
+    desc: 'Estratégias de conteúdo que engajam, conectam e convertem sua audiência.',
+    detail: 'Editorial, produção criativa e gestão de comunidades.',
+    icon: 'message',
+  },
+  {
+    n: '05',
+    title: 'Métricas & BI',
+    desc: 'Dashboards personalizados e relatórios que traduzem números em insights acionáveis.',
+    detail: 'Dashboards em tempo real e relatórios executivos.',
+    icon: 'piechart',
+  },
+  {
+    n: '06',
+    title: 'Campanhas Off-line',
+    desc: 'Estratégias integradas que conectam o mundo digital ao físico com impacto real.',
+    detail: 'Eventos, mídia impressa, OOH e ativações de marca.',
+    icon: 'megaphone',
+  },
+  {
+    n: '07',
+    title: 'Inbound Marketing',
+    desc: 'Atração e nutrição de leads qualificados com conteúdo relevante e automação.',
+    detail: 'E-mail marketing, automação e lead scoring.',
+    icon: 'mail',
+  },
+  {
+    n: '08',
+    title: 'Desenvolvimento Web e E-commerce',
+    desc: 'Sites e lojas virtuais com foco em conversão, performance e experiência do usuário.',
+    detail: 'Landing pages, e-commerce, CRO e performance técnica.',
+    icon: 'globe',
+  },
+  {
+    n: '09',
+    title: 'Jornada de Conversão e Agentes de IA',
+    desc: 'Otimização da jornada do cliente com inteligência artificial e automação inteligente.',
+    detail: 'Chatbots, agentes de IA e automação da jornada.',
+    icon: 'bot',
+  },
+];
+---
+
+<section id="services" class="bg-night py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end" data-animate>
+      <div>
+        <div class="mb-4 flex items-center gap-3">
+          <span class="h-px w-10 bg-blue-400"></span>
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-blue-400">nosso expertise</span>
+        </div>
+        <h2 class="font-display text-5xl font-bold tracking-tight text-white md:text-6xl">
+          o que <span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">fazemos</span>
+        </h2>
+      </div>
+      <p class="max-w-xs text-slate-400">
+        Soluções integradas de uma agência de marketing full-service — para cada etapa do seu crescimento, da
+        estratégia à execução.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {
+        services.map((s, i) => (
+          <article
+            data-animate
+            {...(i === 0 ? { 'data-active': '' } : {})}
+            class="svc-row group relative flex items-center gap-5 rounded-2xl bg-white/[0.04] p-6 transition-colors duration-300 data-[active]:bg-brand md:gap-8 md:px-10 md:py-8"
+            tabindex="0"
+          >
+            <span class="w-14 shrink-0 font-display text-5xl font-bold text-white/10 transition-colors group-data-[active]:text-white/30 md:w-20 md:text-6xl">
+              {s.n}
+            </span>
+
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-blue-400 transition-colors group-data-[active]:bg-white/15 group-data-[active]:text-white">
+              <svg
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                set:html={icons[s.icon]}
+              />
+            </span>
+
+            <span class="min-w-0 flex-1">
+              <h3 class="font-display text-xl font-bold text-white md:text-2xl">{s.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-slate-400 transition-colors group-data-[active]:text-blue-100 md:text-base">
+                {s.desc}
+              </p>
+            </span>
+
+            <span class="hidden max-w-[190px] shrink-0 text-xs leading-relaxed text-blue-100 opacity-0 transition-opacity duration-300 group-data-[active]:opacity-100 lg:block">
+              {s.detail}
+            </span>
+
+            <a
+              href={(s as any).href ?? '#contact'}
+              aria-label={`Saiba mais sobre ${s.title}`}
+              class="hidden h-11 w-11 shrink-0 scale-75 items-center justify-center rounded-full bg-white text-brand opacity-0 transition-all duration-300 group-data-[active]:scale-100 group-data-[active]:opacity-100 hover:rotate-45 md:flex"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="8 7 17 7 17 16" />
+              </svg>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const rows = document.querySelectorAll<HTMLElement>('.svc-row');
+  const activate = (row: HTMLElement) => {
+    rows.forEach((r) => delete r.dataset.active);
+    row.dataset.active = '';
+  };
+  rows.forEach((row) => {
+    row.addEventListener('mouseenter', () => activate(row));
+    row.addEventListener('focusin', () => activate(row));
+  });
+</script>

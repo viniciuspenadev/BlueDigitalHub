@@ -1,0 +1,85 @@
+---
+interface FaqItem {
+  q: string;
+  a: string;
+}
+interface Props {
+  titlePlain?: string;
+  titleAccent?: string;
+  items?: FaqItem[];
+}
+
+const defaultFaqs = [
+  {
+    q: 'O que faz uma agência de marketing?',
+    a: 'Uma agência de marketing planeja e executa estratégias para atrair, converter e fidelizar clientes. Na BlueDigital Hub isso inclui branding, campanhas de growth e performance, conteúdo, inbound marketing, inteligência de dados e tecnologia — tudo integrado para gerar crescimento real do negócio.',
+  },
+  {
+    q: 'O que diferencia a BlueDigital Hub de outras agências de marketing?',
+    a: 'Somos um hub de aceleração: além do marketing, desenvolvemos os ativos digitais do seu negócio — sites, e-commerces, apps e agentes de IA. Estratégia, criação e tecnologia trabalham no mesmo time, com metas de resultado claras e acompanhamento por dados.',
+  },
+  {
+    q: 'Quanto custa contratar uma agência de marketing?',
+    a: 'Depende do escopo: cada projeto recebe uma proposta personalizada de acordo com os canais, o volume de produção e as metas de crescimento. Preencha o formulário de contato e receba uma consultoria estratégica gratuita com estimativa de investimento.',
+  },
+  {
+    q: 'A BlueDigital Hub atende empresas fora de São Paulo?',
+    a: 'Sim. Estamos em São Paulo, mas atendemos empresas de todo o Brasil de forma remota, com reuniões online, relatórios transparentes e comunicação direta pelo WhatsApp.',
+  },
+  {
+    q: 'Em quanto tempo o marketing começa a trazer resultados?',
+    a: 'Campanhas de performance geram dados e vendas desde as primeiras semanas, com otimização contínua. Estratégias de SEO, conteúdo e branding constroem resultados compostos ao longo dos meses. Definimos métricas e prazos realistas já no planejamento.',
+  },
+];
+
+const {
+  titlePlain = 'dúvidas sobre nossa',
+  titleAccent = 'agência de marketing',
+  items: faqs = defaultFaqs,
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<section id="faq" class="border-t border-slate-100 bg-slate-50/60 py-28">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="mb-12" data-animate>
+      <div class="mb-4 flex items-center gap-3">
+        <span class="h-px w-10 bg-brand"></span>
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">perguntas frequentes</span>
+      </div>
+      <h2 class="font-display text-4xl font-bold tracking-tight text-deep md:text-5xl">
+        {titlePlain} <span class="text-brand">{titleAccent}</span>
+      </h2>
+    </div>
+
+    <div class="space-y-4" data-animate>
+      {
+        faqs.map((f) => (
+          <details class="group rounded-2xl border border-slate-200 bg-white transition-shadow open:shadow-lg open:shadow-brand/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 font-display text-lg font-bold text-deep [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand transition-transform duration-300 group-open:rotate-45">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </span>
+            </summary>
+            <p class="px-6 pb-6 leading-relaxed text-slate-600">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

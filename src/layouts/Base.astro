@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Imagem de compartilhamento social (1200×630, JPG/PNG). Caminho a partir da raiz de /public. */
+  image?: string;
+  /** Schemas JSON-LD adicionais desta página (Service, BreadcrumbList, etc.) */
+  schemas?: Record<string, unknown>[];
+}
+
+const {
+  title = 'Blue Digital Hub, Agência de Marketing Digital em São Paulo',
+  description =
+    'A Blue Digital Hub é uma agência de marketing digital, sediada em São Paulo, unindo estratégia, growth, conteúdo, dados e tecnologia para gerar resultados reais.',
+  image = '/og-cover.jpg',
+  schemas = [],
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': 'https://bluedigitalhub.com.br/#agencia',
+  name: 'BlueDigital Hub',
+  alternateName: 'BlueDigital Hub — Agência de Marketing',
+  url: 'https://bluedigitalhub.com.br',
+  email: 'contato@bluedigitalhub.com.br',
+  telephone: '+55 11 92093-2633',
+  description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+  areaServed: 'BR',
+  serviceType: [
+    'Agência de marketing',
+    'Branding estratégico',
+    'Growth e performance',
+    'Inteligência de dados e BI',
+    'Conteúdo e social media',
+    'Inbound marketing',
+    'Campanhas off-line',
+    'Desenvolvimento web e e-commerce',
+    'Automação e agentes de IA',
+  ],
+  sameAs: ['https://www.instagram.com/bluedigital.hub/'],
+};
+
+const allSchemas = [orgSchema, ...schemas];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0000bf" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BlueDigital Hub" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    {allSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body class="bg-white font-sans text-slate-900 antialiased overflow-x-hidden">
+    <slot />
+
+    <!-- Kora — chat widget -->
+    <script src="https://kora.bluedigitalhub.com.br/w/blue-digital-hub" async defer data-cfasync="false"></script>
+  </body>
+</html>

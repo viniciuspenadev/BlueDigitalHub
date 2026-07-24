@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Página não encontrada (404) | Blue Digital Hub">
+  <Header />
+  <main class="relative flex min-h-svh flex-col items-center justify-center overflow-hidden bg-white px-6 py-32 text-center">
+    <!-- Fundo: grade técnica + brilho -->
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div
+        class="absolute inset-0 bg-[linear-gradient(rgba(12,70,230,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(12,70,230,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]"
+      >
+      </div>
+      <div class="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl"></div>
+    </div>
+
+    <div class="relative">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">erro 404</span>
+      <h1 class="mt-4 font-display font-bold tracking-tighter leading-[0.92] text-deep text-[clamp(4rem,12vw,9rem)]">
+        4<span class="bg-gradient-to-r from-brand to-sky-400 bg-clip-text text-transparent">0</span>4
+      </h1>
+      <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-slate-500">
+        Essa página se perdeu no espaço. Mas o caminho de volta pro crescimento a gente conhece bem.
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a
+          href="/"
+          class="group inline-flex items-center justify-center rounded-full bg-brand px-8 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-deep hover:shadow-xl hover:shadow-brand/30"
+        >
+          voltar ao início
+          <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+          </svg>
+        </a>
+        <a
+          href="/#contact"
+          class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-4 font-medium text-slate-700 transition-colors hover:border-brand hover:text-brand"
+          >falar com a gente</a
+        >
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

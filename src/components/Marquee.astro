@@ -1,0 +1,19 @@
+---
+const items = [
+  'branding estratégico',
+  'growth & performance',
+  'inteligência de dados',
+  'conteúdo & social',
+  'inbound marketing',
+  'web & e-commerce',
+  'agentes de ia',
+];
+const line = items.map((i) => i).join('  ✦  ');
+---
+
+<div class="overflow-hidden border-y border-white/10 bg-deep py-5" aria-hidden="true">
+  <div class="marquee-track flex w-max whitespace-nowrap">
+    <span class="font-display text-2xl font-medium text-white/90 pr-8">{line}&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <span class="font-display text-2xl font-medium text-white/90 pr-8">{line}&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+  </div>
+</div>
