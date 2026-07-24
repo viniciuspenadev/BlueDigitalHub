@@ -24,8 +24,4 @@ COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 
-# Healthcheck simples (útil para o EasyPanel/Traefik saberem que o container está pronto)
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost/ >/dev/null 2>&1 || exit 1
-
 CMD ["nginx", "-g", "daemon off;"]
