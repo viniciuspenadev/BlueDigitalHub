@@ -1,0 +1,351 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Faq from '../../components/Faq.astro';
+
+// SEO: keyword principal "gestão de tráfego pago".
+// Secundárias: agência de tráfego pago, Google Ads, Meta Ads, tráfego pago São Paulo.
+const title = 'Gestão de Tráfego Pago em São Paulo | Blue Digital Hub';
+const description =
+  'Gestão de tráfego pago no Google Ads e Meta Ads com time certificado. Campanhas focadas em conversão e relatório claro. Peça seu diagnóstico gratuito.';
+
+const url = 'https://bluedigitalhub.com.br/servicos/trafego-pago/';
+
+const challenges = [
+  'Você tem cliques e visitas, mas poucas conversões',
+  'O investimento em anúncios não está virando venda',
+  'Não sabe em quais canais faz sentido anunciar',
+  'As campanhas rodam isoladas do resto do marketing',
+  'Ninguém consegue dizer quanto cada real trouxe de retorno',
+];
+
+const offer = [
+  {
+    title: 'Estratégia',
+    desc: 'Tudo começa entendendo o seu negócio e a sua meta, não o clique fácil. Fazemos o diagnóstico das campanhas atuais, definimos canais, públicos e orçamento, e montamos um plano de mídia conectado ao objetivo comercial.',
+  },
+  {
+    title: 'Produção',
+    desc: 'Cuidamos da criação das campanhas, dos anúncios e dos criativos, com textos e segmentação pensados para cada público. Estruturamos tudo dentro das plataformas para o seu investimento começar a trabalhar rápido.',
+  },
+  {
+    title: 'Gestão',
+    desc: 'Você acompanha de perto, com relatório mensal, reunião de alinhamento e um grupo no WhatsApp. Otimizamos as campanhas continuamente, com rastreamento preciso de conversões no GA4 e no Tag Manager.',
+  },
+];
+
+const platforms = [
+  {
+    name: 'Google Ads',
+    desc: 'Apareça na frente do concorrente no momento exato em que a pessoa procura pelo seu produto ou serviço.',
+  },
+  {
+    name: 'Google Shopping',
+    desc: 'Coloque seus produtos em evidência na vitrine do Google e conquiste mais vendas para o seu e-commerce.',
+  },
+  {
+    name: 'Meta Ads',
+    desc: 'Sua marca vista e lembrada no Facebook e no Instagram, com segmentação por interesse e comportamento.',
+  },
+  {
+    name: 'LinkedIn Ads',
+    desc: 'Atraia leads B2B qualificados com anúncios direcionados por cargo, empresa e setor de atuação.',
+  },
+];
+
+const faqItems = [
+  {
+    q: 'Quanto custa a gestão de tráfego pago?',
+    a: 'A gestão é cobrada como um fee mensal, definido pelo escopo do projeto: número de canais, volume de campanhas e criativos, e complexidade do funil. Esse valor é separado da verba de mídia, que vai direto para o Google e para o Meta. Enviamos a proposta depois de um diagnóstico gratuito da sua operação atual.',
+  },
+  {
+    q: 'Quanto devo investir em anúncios por mês?',
+    a: 'Para campanhas de geração de leads, o mínimo recomendado é R$ 1.500 por mês em mídia. Abaixo disso o algoritmo do Google e do Meta não reúne dados suficientes para sair da fase de aprendizado, e a otimização fica imprecisa. E-commerce e mercados mais competitivos costumam pedir verba maior.',
+  },
+  {
+    q: 'Em quanto tempo as campanhas começam a dar resultado?',
+    a: 'As primeiras conversões costumam aparecer já nas duas primeiras semanas. O período que realmente importa é o do primeiro ao terceiro mês: é quando o algoritmo termina o aprendizado, os testes de criativo e público mostram o que funciona, e o custo por resultado começa a cair de forma consistente.',
+  },
+  {
+    q: 'Posso alterar o meu investimento a qualquer momento?',
+    a: 'Pode. A verba de mídia fica na sua conta de anúncios, no seu nome, e você aumenta ou reduz quando quiser. Só avisamos que cortes bruscos no meio de uma campanha reiniciam o aprendizado do algoritmo, então costumamos ajustar em degraus.',
+  },
+  {
+    q: 'Tráfego pago atrapalha o SEO do meu site?',
+    a: 'Não. São canais independentes: clicar em um anúncio não altera a sua posição orgânica no Google. Na prática eles se ajudam. O tráfego pago mostra em semanas quais palavras convertem de verdade, e essa informação orienta o trabalho de SEO, que leva meses para maturar.',
+  },
+  {
+    q: 'De quem é a conta de anúncios?',
+    a: 'Sua. Configuramos ou usamos a conta no CNPJ da sua empresa e trabalhamos com acesso de parceiro. Se um dia a parceria terminar, o histórico de campanhas, os públicos e o aprendizado acumulado continuam com você.',
+  },
+];
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Gestão de Tráfego Pago',
+    serviceType: 'Gestão de tráfego pago e mídia paga',
+    provider: { '@id': 'https://bluedigitalhub.com.br/#agencia' },
+    areaServed: { '@type': 'Country', name: 'Brasil' },
+    description,
+    url,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Plataformas de mídia paga',
+      itemListElement: platforms.map((p) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: p.name, description: p.desc },
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://bluedigitalhub.com.br/' },
+      { '@type': 'ListItem', position: 2, name: 'Serviços', item: 'https://bluedigitalhub.com.br/#services' },
+      { '@type': 'ListItem', position: 3, name: 'Gestão de Tráfego Pago', item: url },
+    ],
+  },
+];
+---
+
+<Base title={title} description={description} schemas={schemas}>
+  <Header heroTheme="dark" />
+
+  <main>
+    <!-- HERO -->
+    <section class="relative flex min-h-[76svh] items-center overflow-hidden bg-night pt-28 pb-20">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:5rem_5rem]"
+        >
+        </div>
+        <div class="absolute -top-32 right-[-10%] h-[620px] w-[620px] rounded-full bg-brand/25 blur-3xl"></div>
+        <div class="absolute bottom-[-35%] left-[-5%] h-[520px] w-[520px] rounded-full bg-deep/40 blur-3xl"></div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-7xl px-6">
+        <nav class="mb-6 flex items-center gap-2 font-mono text-xs text-slate-400" aria-label="Trilha de navegação">
+          <a href="/" class="transition-colors hover:text-blue-300">Início</a>
+          <span aria-hidden="true">/</span>
+          <a href="/#services" class="transition-colors hover:text-blue-300">Serviços</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-blue-300">Tráfego Pago</span>
+        </nav>
+
+        <h1 class="max-w-4xl font-display font-bold leading-[0.95] tracking-tighter text-white text-[clamp(2.6rem,6.5vw,5.5rem)]">
+          Gestão de<br />Tráfego Pago
+        </h1>
+
+        <p class="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
+          Criamos campanhas no Google e no Meta que atraem o cliente certo, geram oportunidade e aceleram a sua venda,
+          com cada real investido conectado ao objetivo do seu negócio.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/#contact"
+            class="group inline-flex items-center justify-center rounded-full bg-brand px-8 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-xl hover:shadow-brand/30"
+          >
+            quero um diagnóstico gratuito
+            <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+            </svg>
+          </a>
+          <a
+            href="#plataformas"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-medium text-white transition-colors hover:border-blue-400 hover:text-blue-300"
+            >ver as plataformas</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- NÚMERO DE DESTAQUE -->
+    <section class="bg-night pb-24">
+      <div class="mx-auto max-w-7xl border-t border-white/10 px-6 pt-16">
+        <p class="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+          Mais de <span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">R$ 1 milhão</span>
+          investido em campanhas de alta conversão
+        </p>
+        <p class="mt-6 max-w-2xl leading-relaxed text-slate-400">
+          Já gerenciamos verba de mídia em segmentos como educação, logística, alimentação, fitness e SaaS. Cada um
+          desses mercados ensina algo diferente sobre público, sazonalidade e custo de aquisição.
+        </p>
+      </div>
+    </section>
+
+    <!-- DEFINIÇÃO + DESAFIOS (bloco pensado para citação em IA) -->
+    <section class="bg-white py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+        <div class="md:sticky md:top-28 md:self-start">
+          <div class="mb-4 flex items-center gap-3">
+            <span class="h-px w-10 bg-brand"></span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">o que é</span>
+          </div>
+          <h2 class="font-display text-3xl font-bold leading-tight tracking-tight text-deep md:text-4xl">
+            O que é gestão de tráfego pago?
+          </h2>
+        </div>
+
+        <div>
+          <div class="space-y-5 text-lg leading-relaxed text-slate-600">
+            <p>
+              Gestão de tráfego pago é o trabalho de planejar, criar e otimizar anúncios em plataformas como Google Ads
+              e Meta Ads para atrair pessoas com real intenção de compra. Inclui a definição de público, a produção dos
+              anúncios, o controle diário do orçamento e a leitura das métricas que dizem o que escalar e o que cortar.
+            </p>
+            <p>
+              A diferença entre impulsionar um post e gerir tráfego está aí. Impulsionar entrega alcance. Gerir tráfego
+              entrega previsibilidade: você sabe quanto custa cada lead, quais palavras vendem e quanto precisa
+              investir no próximo mês para dobrar de tamanho.
+            </p>
+          </div>
+
+          <h3 class="mt-14 font-display text-2xl font-bold tracking-tight text-deep">Você enfrenta esses desafios?</h3>
+          <ul class="mt-6 space-y-4">
+            {
+              challenges.map((c) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="9 11 12 14 22 4" />
+                    </svg>
+                  </span>
+                  <span class="text-lg text-slate-700">{c}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE OFERECEMOS -->
+    <section class="bg-slate-50/70 py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+        <h2 class="font-display text-3xl font-bold leading-tight tracking-tight text-deep md:text-4xl md:sticky md:top-28 md:self-start">
+          O que oferecemos?
+        </h2>
+        <div class="space-y-12">
+          {
+            offer.map((o) => (
+              <div>
+                <h3 class="font-display text-2xl font-bold text-deep">{o.title}</h3>
+                <p class="mt-3 max-w-xl leading-relaxed text-slate-600">{o.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATAFORMAS + CERTIFICAÇÕES -->
+    <section id="plataformas" class="bg-night py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+          <div>
+            <h2 class="font-display text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl">
+              Experiência nas <span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">principais plataformas</span>
+              de tráfego pago
+            </h2>
+            <p class="mt-6 max-w-xl leading-relaxed text-slate-400">
+              Somos agência certificada como Google Ads Partner e Meta Business Partner. Cada campanha é gerida por
+              especialista, com foco em performance desde o primeiro dia.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-start gap-4 md:justify-end">
+            <span class="inline-flex items-center rounded-xl bg-white px-4 py-3">
+              <img src="/assets/certs/google-ads.webp" alt="Google Ads Parceiro Certificado" loading="lazy" class="h-8 w-auto" />
+            </span>
+            <span class="inline-flex items-center rounded-xl bg-white px-4 py-3">
+              <img src="/assets/certs/meta-business.webp" alt="Meta Business Partner" loading="lazy" class="h-8 w-auto" />
+            </span>
+            <span class="inline-flex items-center rounded-xl bg-white px-4 py-3">
+              <img src="/assets/certs/meta-tech-provider.webp" alt="Meta Tech Provider" loading="lazy" class="h-8 w-auto" />
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-16 grid gap-x-16 gap-y-10 border-t border-white/10 pt-12 md:grid-cols-2">
+          {
+            platforms.map((p) => (
+              <div>
+                <h3 class="font-display text-lg font-bold text-white">{p.name}</h3>
+                <p class="mt-2 max-w-md text-sm leading-relaxed text-slate-400">{p.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="bg-white py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="max-w-2xl font-display text-3xl font-bold leading-tight tracking-tight text-deep md:text-4xl">
+          Nossa experiência entrega resultados
+        </h2>
+        <p class="mt-5 max-w-xl leading-relaxed text-slate-600">
+          Atendemos de e-commerce a escola particular, de logística internacional a rede de academia. Veja os projetos
+          que tocamos e o que construímos em cada um deles.
+        </p>
+        <a
+          href="/#portfolio"
+          class="group mt-8 inline-flex items-center gap-2 font-semibold text-brand transition-colors hover:text-deep"
+        >
+          ver cases de sucesso
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAIXA CTA -->
+    <section class="bg-brand py-16">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-center">
+        <p class="font-display text-3xl font-bold leading-tight text-white md:text-4xl">
+          Dê o primeiro passo.<br />Vamos juntos.
+        </p>
+        <a
+          href="/#contact"
+          class="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold tracking-wide text-deep uppercase transition-transform hover:-translate-y-0.5"
+        >
+          fale com um especialista
+        </a>
+      </div>
+    </section>
+
+    <Faq titlePlain="dúvidas sobre" titleAccent="tráfego pago" items={faqItems} />
+
+    <!-- CTA FINAL -->
+    <section class="relative overflow-hidden bg-night py-24">
+      <div class="pointer-events-none absolute top-0 left-1/3 h-72 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-4xl px-6 text-center">
+        <h2 class="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
+          Vamos construir uma estratégia de mídia para o seu negócio?
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-lg text-slate-300">
+          Responda algumas perguntas e receba um diagnóstico gratuito, com os gargalos que encontramos e o próximo passo
+          recomendado para a sua operação.
+        </p>
+        <a
+          href="/#contact"
+          class="mt-9 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-bold text-deep transition-all hover:-translate-y-0.5 hover:shadow-xl"
+        >
+          começar diagnóstico
+          <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="20" y2="12" /><polyline points="13 5 20 12 13 19" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

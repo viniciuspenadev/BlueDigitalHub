@@ -30,7 +30,7 @@ const offerCatalog = {
   name: 'Serviços de Marketing Digital',
   itemListElement: [
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Branding Estratégico', url: 'https://bluedigitalhub.com.br/servicos/branding-estrategico/' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tráfego Pago (Growth & Performance)' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Gestão de Tráfego Pago', url: 'https://bluedigitalhub.com.br/servicos/trafego-pago/' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Inteligência de Dados' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media & Design Gráfico' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Métricas & BI' } },
@@ -45,8 +45,9 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   '@id': 'https://bluedigitalhub.com.br/#agencia',
-  name: 'BlueDigital Hub',
-  alternateName: 'BlueDigital Hub — Agência de Marketing',
+  // O nome precisa bater exatamente com o do perfil no Google Business.
+  name: 'Blue Digital Hub | Agência de Marketing Digital',
+  alternateName: 'Blue Digital Hub | Agência de Publicidade e Marketing Digital',
   url: 'https://bluedigitalhub.com.br',
   logo: {
     '@type': 'ImageObject',
@@ -55,7 +56,7 @@ const orgSchema = {
     contentUrl: 'https://bluedigitalhub.com.br/logo.svg',
     width: 1920,
     height: 396,
-    caption: 'BlueDigital Hub',
+    caption: 'Blue Digital Hub',
   },
   image: 'https://bluedigitalhub.com.br/og-cover.jpg',
   email: 'contato@bluedigitalhub.com.br',
@@ -69,6 +70,13 @@ const orgSchema = {
     postalCode: '03734-130',
     addressCountry: 'BR',
   },
+  // Coordenadas do perfil verificado no Google Business.
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -23.5104825,
+    longitude: -46.5241995,
+  },
+  hasMap: 'https://maps.google.com/?cid=9019384674417038039',
   areaServed: { '@type': 'Country', name: 'Brasil' },
   serviceType: [
     'Agência de marketing',
@@ -82,7 +90,11 @@ const orgSchema = {
     'Automação e agentes de IA',
   ],
   hasOfferCatalog: offerCatalog,
-  sameAs: ['https://www.instagram.com/bluedigital.hub/'],
+  // Liga o site ao perfil verificado no Maps, sinal forte de SEO local.
+  sameAs: [
+    'https://www.instagram.com/bluedigital.hub/',
+    'https://maps.google.com/?cid=9019384674417038039',
+  ],
 };
 
 const websiteSchema = {
@@ -90,7 +102,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   '@id': 'https://bluedigitalhub.com.br/#website',
   url: 'https://bluedigitalhub.com.br',
-  name: 'BlueDigital Hub',
+  name: 'Blue Digital Hub',
   inLanguage: 'pt-BR',
   publisher: { '@id': 'https://bluedigitalhub.com.br/#agencia' },
 };
@@ -113,7 +125,7 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas];
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="BlueDigital Hub" />
+    <meta property="og:site_name" content="Blue Digital Hub" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -138,7 +150,7 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas];
   <body class="bg-white font-sans text-slate-900 antialiased overflow-x-hidden">
     <slot />
 
-    <!-- Kora — chat widget -->
+    <!-- Kora: chat widget -->
     <script src="https://kora.bluedigitalhub.com.br/w/blue-digital-hub" async defer data-cfasync="false"></script>
   </body>
 </html>
