@@ -39,7 +39,7 @@
       <section class="center" aria-label="Mapa tático">
         <div class="board-head"><h1>Planejamento da partida</h1><div class="segmented" role="tablist" aria-label="Campo"><button class="active" data-field="main" role="tab" aria-selected="true">Campo principal</button><button data-field="secondary" role="tab" aria-selected="false">Campo secundário</button></div><div class="zoom-controls"><button class="btn" id="undo" type="button" title="Desfazer (Ctrl+Z)" aria-label="Desfazer">↶</button><button class="btn" id="redo" type="button" title="Refazer (Ctrl+Y)" aria-label="Refazer">↷</button><button class="btn" id="zoom-out" type="button" aria-label="Diminuir zoom">−</button><output id="zoom-level">100%</output><button class="btn" id="zoom-in" type="button" aria-label="Aumentar zoom">+</button></div></div>
         <div class="board-frame">
-          <div class="map-plane" id="map-plane" aria-hidden="true"><img id="map-image" src="mapa-vale-of-clash.webp" alt=""></div>
+          <div class="map-plane" id="map-plane" aria-hidden="true"><img id="map-image" src="mapa-vale-of-clash.webp?v=2" alt=""></div>
           <div class="map-badge" id="map-badge">Campo principal · mapa real</div>
           <input class="map-text-editor" id="text-editor" type="text" maxlength="60" spellcheck="false" autocomplete="off" aria-label="Texto no mapa" hidden>
           <svg id="board" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa tático do Vale of Clash"></svg>
@@ -62,6 +62,6 @@
   <div class="hover-card" id="hover-card" role="tooltip" hidden></div>
   <div class="context-menu popover" id="popover" role="dialog" aria-label="Ações do plano" hidden></div>
   <!-- Troque o ?v= a cada atualização: o servidor guarda .js em cache por 30 dias. -->
-  <script src="app.js?v=2026-10-07.23" defer></script>
+  <script src="app.js?v=2026-10-07.24" defer></script>
 </body>
 </html>

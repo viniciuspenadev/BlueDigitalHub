@@ -4,7 +4,7 @@
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const WIDTH = 1000;
   const HEIGHT = 1000;
-  const DEFAULT_MAP = 'mapa-vale-of-clash.webp';
+  const DEFAULT_MAP = 'mapa-vale-of-clash.webp?v=2'; // troque o ?v= ao trocar a imagem (cache de 30 dias no servidor)
   const COLORS = ['#7ed7c2', '#f4b86e', '#b99add', '#f07d83', '#6fb3ff', '#b5e06a', '#ff8fd1', '#eef2f0'];
   const FALLBACK_COLOR = '#d6b978';
   const MAX_PARTIES = 8;
@@ -27,12 +27,12 @@
   };
   // Locais possíveis dos pilares, alinhados ao mapa a partir do vídeo do modo (1:01–1:20).
   const DEFAULT_PILLARS = [
-    ['S1', 'pillar-s', 502, 443],
-    ['A1', 'pillar-a', 349, 273], ['A2', 'pillar-a', 620, 308], ['A3', 'pillar-a', 672, 605],
-    ['A4', 'pillar-a', 386, 709], ['A5', 'pillar-a', 324, 522], ['A6', 'pillar-a', 350, 392],
-    ['B1', 'pillar-b', 387, 164], ['B2', 'pillar-b', 612, 142], ['B3', 'pillar-b', 790, 328],
-    ['B4', 'pillar-b', 810, 471], ['B5', 'pillar-b', 856, 608], ['B6', 'pillar-b', 657, 794],
-    ['B7', 'pillar-b', 459, 602], ['B8', 'pillar-b', 180, 592], ['B9', 'pillar-b', 211, 365]
+    ['S1', 'pillar-s', 504, 459],
+    ['A1', 'pillar-a', 350, 288], ['A2', 'pillar-a', 622, 322], ['A3', 'pillar-a', 674, 623],
+    ['A4', 'pillar-a', 387, 729], ['A5', 'pillar-a', 324, 541], ['A6', 'pillar-a', 351, 408],
+    ['B1', 'pillar-b', 389, 177], ['B2', 'pillar-b', 615, 153], ['B3', 'pillar-b', 793, 341],
+    ['B4', 'pillar-b', 813, 485], ['B5', 'pillar-b', 859, 624], ['B6', 'pillar-b', 659, 814],
+    ['B7', 'pillar-b', 460, 621], ['B8', 'pillar-b', 179, 613], ['B9', 'pillar-b', 211, 382]
   ];
   // Cada pilar paga: quebrar o selo + capturar a zona + segurar a zona (pago a cada 5 s durante "hold" segundos).
   // Valores editáveis no painel "Valores dos pilares"; o secundário usa os mesmos números como moral para o principal.
