@@ -727,12 +727,13 @@
   board.addEventListener('pointercancel', finishPointer);
   board.addEventListener('pointerleave', () => laserCircle?.setAttribute('visibility', 'hidden'));
 
-  document.querySelectorAll('[data-tool]').forEach(button => button.addEventListener('click', () => {
-    tool = button.dataset.tool;
+  function chooseTool(name) {
+    tool = name;
     selectedId = null;
     render();
     setStatus(TOOL_HELP[tool]);
-  }));
+  }
+  document.querySelectorAll('[data-tool]').forEach(button => button.addEventListener('click', () => chooseTool(button.dataset.tool)));
   document.querySelectorAll('[data-field]').forEach(button => button.addEventListener('click', () => {
     field = button.dataset.field;
     selectedId = null;
@@ -770,17 +771,18 @@
     render();
     setStatus(`${LANDMARKS[placeKind].name}: clique no mapa para posicioná-lo.`);
   });
+  function setPillarState(pillar, state) {
+    remember();
+    const states = current().pillars ||= {};
+    if (PILLAR_STATES.includes(state)) states[pillar.id] = state;
+    else delete states[pillar.id];
+    render();
+    setStatus(state === 'off' ? `${pillar.label} inativo na fase ${phase + 1}.` : TEAMS[state] ? `${pillar.label} com ${TEAMS[state].name} na fase ${phase + 1}.` : `${pillar.label} neutro na fase ${phase + 1}.`);
+  }
   pillarStates.addEventListener('click', event => {
     const button = event.target.closest('[data-state]');
     const pillar = selectedPillar();
-    if (!button || !pillar) return;
-    remember();
-    const states = current().pillars ||= {};
-    if (PILLAR_STATES.includes(button.dataset.state)) states[pillar.id] = button.dataset.state;
-    else delete states[pillar.id];
-    render();
-    const state = states[pillar.id];
-    setStatus(state === 'off' ? `${pillar.label} inativo na fase ${phase + 1}.` : state ? `${pillar.label} com ${TEAMS[state].name} na fase ${phase + 1}.` : `${pillar.label} neutro na fase ${phase + 1}.`);
+    if (button && pillar) setPillarState(pillar, button.dataset.state);
   });
 
   for (let group = 1; group <= GROUPS; group++) {
@@ -898,6 +900,82 @@
     }
     if (!editing && event.key === 'Escape') { selectedId = null; tool = 'select'; render(); setStatus(TOOL_HELP.select); }
   });
+
+  // Menu do botão direito sobre o mapa: ações no elemento clicado, ferramentas e desfazer/refazer.
+  const contextMenu = document.querySelector('#context-menu');
+  const STATE_LABELS = { neutral: 'Neutro', dawn: 'Dawn', lush: 'Lush', off: 'Inativo' };
+  function describeItem(item) {
+    if (landmarks().includes(item)) return `${item.label} · ${LANDMARKS[item.kind].name}`;
+    const names = partyNames(itemParties(item)) || 'sem PT';
+    if (item.type === 'route') return `Rota · ${names}`;
+    if (item.type === 'pen') return `Desenho · ${names}`;
+    if (item.type === 'token') return `Marcador · ${names}`;
+    return `Texto · “${item.text}”`;
+  }
+  function closeContextMenu() {
+    if (contextMenu.hidden) return;
+    contextMenu.hidden = true;
+    contextMenu.replaceChildren();
+  }
+  function openContextMenu(event) {
+    const hit = hitItem(event);
+    if (hit && hit.id !== selectedId) { selectedId = hit.id; render(); }
+    const button = (label, action, { icon = '', active = false, disabled = false, className = 'menu-item' } = {}) => {
+      const node = document.createElement('button');
+      node.type = 'button';
+      node.className = className;
+      node.setAttribute('role', 'menuitem');
+      node.disabled = disabled;
+      node.classList.toggle('active', active);
+      if (icon) {
+        const symbol = document.createElement('span');
+        symbol.className = 'menu-icon';
+        symbol.textContent = icon;
+        node.append(symbol);
+      }
+      node.append(label);
+      node.addEventListener('click', () => { closeContextMenu(); action(); });
+      return node;
+    };
+    const separator = () => Object.assign(document.createElement('div'), { className: 'menu-sep' });
+    const parts = [];
+    if (hit) {
+      parts.push(Object.assign(document.createElement('div'), { className: 'menu-title', textContent: describeItem(hit) }));
+      if (landmarks().includes(hit)) {
+        const state = current().pillars?.[hit.id] || 'neutral';
+        const row = document.createElement('div');
+        row.className = 'menu-states';
+        for (const [key, label] of Object.entries(STATE_LABELS)) row.append(button(label, () => setPillarState(hit, key), { active: key === state, className: `menu-state ${key}` }));
+        parts.push(row);
+      }
+      parts.push(button('Apagar', () => { remember(); deleteItem(hit.id); selectedId = null; render(); setStatus('Elemento apagado.'); }, { icon: '⌫', className: 'menu-item danger' }), separator());
+    }
+    const tools = document.createElement('div');
+    tools.className = 'menu-tools';
+    for (const source of document.querySelectorAll('.toolbar [data-tool]')) {
+      tools.append(button(source.querySelector('span').textContent, () => chooseTool(source.dataset.tool), { icon: source.firstChild.textContent.trim(), active: source.dataset.tool === tool, className: 'menu-tool' }));
+    }
+    parts.push(tools, separator(), button('Desfazer', undo, { icon: '↶', disabled: !undoStack.length }), button('Refazer', redo, { icon: '↷', disabled: !redoStack.length }));
+    contextMenu.replaceChildren(...parts);
+    contextMenu.hidden = false;
+    const { width, height } = contextMenu.getBoundingClientRect();
+    contextMenu.style.left = `${Math.max(8, Math.min(event.clientX, innerWidth - width - 8))}px`;
+    contextMenu.style.top = `${Math.max(8, Math.min(event.clientY, innerHeight - height - 8))}px`;
+    contextMenu.querySelector('button:not(:disabled)')?.focus();
+  }
+  board.addEventListener('contextmenu', event => {
+    event.preventDefault();
+    if (!interaction) openContextMenu(event);
+  });
+  document.addEventListener('pointerdown', event => { if (!contextMenu.contains(event.target)) closeContextMenu(); }, true);
+  document.addEventListener('keydown', event => {
+    if (contextMenu.hidden || event.key !== 'Escape') return;
+    event.stopImmediatePropagation();
+    closeContextMenu();
+  }, true);
+  window.addEventListener('resize', closeContextMenu);
+  window.addEventListener('blur', closeContextMenu);
+  boardFrame.addEventListener('wheel', closeContextMenu, { passive: true });
 
   const download = (blob, filename) => {
     const url = URL.createObjectURL(blob);
